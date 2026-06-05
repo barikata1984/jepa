@@ -12,7 +12,7 @@
 
 - [x] stable-worldmodel のインストールと動作確認 — v0.1.0 + lerobot 0.5.1 + FFmpeg 8.1.1
 - [x] berkeley_autolab_ur5 (LeRobot, 1K ep) でパイプライン疎通 — LeWM 1 エポック学習完走 (15 min, RTX 5090). ~2.5% のサンプルにタイムスタンプ不整合あり (SafeDataset で回避)
-- [ ] RoboMIND UR5e データ (25K 軌跡) の取得と robomind2lerobot による LeRobot 形式への変換
+- [ ] RoboMIND UR5e データ (25K 軌跡) の取得と robomind2lerobot による LeRobot 形式への変換 — HF アクセス承認済み, サブセット 5 タスク (~7 GB) ダウンロード中
 
 ## LeWM の破綻箇所特定 (オフライン, RoboMIND UR5e)
 
@@ -22,7 +22,7 @@
 ### Stage 0: 固有次元の事前測定
 
 - [x] berkeley_autolab_ur5 で予備測定 — Two-NN: ~6, ViT PCA 95%: 12 成分. 192 次元に対して大幅に低い → SIGReg ミスマッチのリスク大
-- [ ] RoboMIND UR5e 画像で再測定する (データ取得後)
+- [x] RoboMIND UR5e 画像で再測定する — Two-NN: ~3.4, ViT PCA 95%: 8 成分. berkeley (~6) よりさらに低い. ミスマッチリスク増大
 - 判断基準: 固有次元 << 192 → SIGReg ミスマッチが起きる見込み大 / ~100+ → 深刻でない可能性
 
 ### Stage 1: LeWM 学習 + 潜在空間の診断
@@ -36,6 +36,7 @@
 - [ ] held-out エピソードで multi-step 予測の誤差劣化を測定する (1, 5, 10 step, 潜在空間 MSE)
 - [ ] コピーベースライン (前フレームをそのまま返す) と比較する
 - 判断基準: ホライズンに対して指数的に劣化 → ワールドモデルとして計画に使えない
+- [x] 信号/ノイズ次元分離 MSE 分析 — 信号次元 (51 dims) の MSE は全次元平均の ~3.7 倍. ノイズ次元が評価指標を ~73% 希釈していた. 信号次元でも線形増加だが傾き ~0.06/step (全次元の 4 倍)
 
 ### 方向決定
 
