@@ -38,9 +38,20 @@
 - 判断基準: ホライズンに対して指数的に劣化 → 計画に使えない → **全次元は線形だが, 信号次元のみで見ると RoboMIND は h=1 でコピーに負ける. berkeley では勝つ. 固有次元の低さが直結**
 - [x] 信号/ノイズ次元分離 MSE 分析 — berkeley: 信号 51 dims, 希釈 73%. RoboMIND: 信号 40 dims, 希釈 79%
 
+### 潜在次元スイープ (素朴な次元縮小の検証)
+
+- [x] ViT hidden_size ∈ {12, 24, 48, 96, 192} で LeWM を訓練し, SIGReg 指標と pred_loss を比較 — SIGReg 利用率は改善するが pred_loss はエンコーダ容量に支配され, 素朴な縮小は純損
+- [x] 評価手法 (コピーベースライン Pred/Copy) の方法論的問題を発見 — pred_proj/projector の空間不一致による定数オフセット. h=1 の結果が誤解を招く
+
+### Stage 2 ver 2: SIGReg weight ablation
+
+- [x] SIGReg weight ∈ {0, 0.009, 0.03, 0.09, 0.9} で d=192 固定, RoboMIND で訓練 — pred_loss は weight と単調増加. weight=0 で崩壊確認 (コサイン類似度 0.97, 埋め込み分散 26,000 倍小さい)
+- [x] weight=0 と weight=0.09 の埋め込み分散比較で表現崩壊の亜種を確認 — SIGReg は崩壊防止に必要, ただし圧力が強すぎる
+
 ### 方向決定
 
-- [ ] Stage 0–2 の結果を踏まえ, 提案手法の方向性を決定する
+- [ ] Stage 0–2 + dim sweep + SIGReg ablation の結果を踏まえ, 提案手法の方向性を決定する
+- [ ] 候補: (1) RDMReg (Rectified LpJEPA) の LeWM への適用, (2) 変分 JEPA ワールドモデル, (3) 崩壊防止手法の体系的比較
 
 ## 比較実験 (方向決定後)
 
