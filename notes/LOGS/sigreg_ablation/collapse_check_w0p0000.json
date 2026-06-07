@@ -1,0 +1,18 @@
+{
+  "sigreg_weight": 0.0,
+  "pred_loss": 5.5e-05,
+  "effective_rank": 63.27,
+  "embedding_stats": {
+    "n_embeddings": 8192,
+    "dim": 192,
+    "norm_mean": 0.4708,
+    "norm_std": 0.0139,
+    "norm_min": 0.4402,
+    "norm_max": 0.6397,
+    "per_dim_variance_mean": 3.9e-05,
+    "per_dim_variance_std": 7e-06,
+    "total_variance": 0.0075,
+    "mean_cosine_similarity": 0.967962,
+    "mean_pairwise_l2": 0.1187
+  }
+}

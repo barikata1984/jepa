@@ -1,0 +1,117 @@
+[
+  {
+    "epoch": 0,
+    "effective_rank": 7.32,
+    "latent_dim": 12,
+    "n_embeddings": 4096,
+    "top_20_singular_values": [
+      278.9394,
+      134.6816,
+      115.1136,
+      101.1019,
+      74.894,
+      54.1706,
+      28.9613,
+      26.1482,
+      18.2551,
+      12.0036,
+      5.3937,
+      4.2492
+    ],
+    "avg_pred_loss": 0.272797,
+    "avg_sigreg_loss": 55.528409,
+    "sigreg_pred_ratio": 203.5518
+  },
+  {
+    "epoch": 1,
+    "effective_rank": 8.7,
+    "latent_dim": 12,
+    "n_embeddings": 4096,
+    "top_20_singular_values": [
+      213.5595,
+      110.2998,
+      96.8801,
+      91.2868,
+      70.1485,
+      67.8971,
+      67.0958,
+      47.1958,
+      25.1544,
+      15.8956,
+      8.1046,
+      4.657
+    ],
+    "avg_pred_loss": 0.110032,
+    "avg_sigreg_loss": 38.473485,
+    "sigreg_pred_ratio": 349.6582
+  },
+  {
+    "epoch": 2,
+    "effective_rank": 9.68,
+    "latent_dim": 12,
+    "n_embeddings": 4096,
+    "top_20_singular_values": [
+      138.4958,
+      113.8975,
+      90.7487,
+      78.913,
+      76.5574,
+      73.2566,
+      67.5884,
+      52.309,
+      48.3383,
+      21.6626,
+      6.8229,
+      5.3075
+    ],
+    "avg_pred_loss": 0.066968,
+    "avg_sigreg_loss": 11.806818,
+    "sigreg_pred_ratio": 176.3045
+  },
+  {
+    "epoch": 3,
+    "effective_rank": 10.27,
+    "latent_dim": 12,
+    "n_embeddings": 4096,
+    "top_20_singular_values": [
+      93.5634,
+      83.0299,
+      80.3875,
+      76.1807,
+      73.9126,
+      72.9874,
+      66.588,
+      60.5007,
+      56.8055,
+      26.4938,
+      7.4637,
+      5.97
+    ],
+    "avg_pred_loss": 0.041605,
+    "avg_sigreg_loss": 4.629261,
+    "sigreg_pred_ratio": 111.2666
+  },
+  {
+    "epoch": 4,
+    "effective_rank": 10.39,
+    "latent_dim": 12,
+    "n_embeddings": 4096,
+    "top_20_singular_values": [
+      79.3005,
+      77.6002,
+      75.957,
+      73.0326,
+      71.957,
+      70.4029,
+      68.3214,
+      66.978,
+      61.2089,
+      26.8645,
+      7.4032,
+      6.2317
+    ],
+    "avg_pred_loss": 0.038821,
+    "avg_sigreg_loss": 2.51965,
+    "sigreg_pred_ratio": 64.9048
+  }
+]

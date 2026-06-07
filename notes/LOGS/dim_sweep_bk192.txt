@@ -1,0 +1,1103 @@
+14:13:48 | INFO  | __init__.py | JAX version 0.10.1 available.
+14:13:51 | INFO  | atomic_chec~| [atomic_save] installed crash-safe checkpoint plugin (write to sibling .tmp + fsync + atomic rename)
+
+============================================================
+  d_latent=192, heads=3, head_dim=64
+  dataset=berkeley, epochs=5
+============================================================
+
+Loading training data...
+14:13:51 | INFO  | __init__.py | Using video codec: libsvtav1
+14:13:51 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:13:52 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 12336.19it/s]
+Using custom data configuration default-2c7d921dc92e95a7
+14:13:52 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:13:52 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+14:13:52 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:13:52 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:05 | INFO  | utils.py    | Created ViT-tiny from scratch with config: {'hidden_size': 192, 'num_hidden_layers': 12, 'num_attention_heads': 3, 'intermediate_size': 768, 'image_size': 224, 'patch_size': 14}
+Model parameters: 18,034,448
+14:14:05 | INFO  | utils.py    | ── Module ────────────────────────────────────────
+14:14:05 | WARN  | module.py   | ! No hyperparameters provided - hyperparameter logging is disabled.
+14:14:05 | INFO  | module.py   |   Setting custom forward method.
+14:14:05 | INFO  | module.py   |   Setting attribute: self.model = <class 'stable_worldmodel.wm.lewm.lewm.LeWM'>
+14:14:05 | INFO  | module.py   |   Setting attribute: self.sigreg = <class 'stable_worldmodel.wm.loss.SIGReg'>
+14:14:05 | INFO  | module.py   |   Setting attribute: self.optim = <class 'dict'>
+14:14:05 | INFO  | module.py   |   No metrics configuration provided - automatic metric tracking is disabled.
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/fabric/connector.py:571: `precision=bf16` is supported for historical reasons but its usage is discouraged. Please set your precision to bf16-mixed instead!
+Using bfloat16 Automatic Mixed Precision (AMP)
+14:14:05 | INFO  | env_info.py |   EnvironmentDumpCallback initialized (filename=environment.json, async=True)
+14:14:05 | INFO  | utils.py    | ── HuggingFaceCheckpoint ─────────────────────────
+14:14:05 | INFO  | hf_models.py|   save_dir: <cyan>hf_exports</cyan>
+14:14:05 | INFO  | hf_models.py|   per_step: <cyan>False</cyan>  (False ⇒ overwrite single 'last/' subdir; True ⇒ keep step_N/)
+Adding 14 callbacks from entry point 'stablepretraining_callbacks': PrintProgressBar, ModuleRegistryCallback, LoggingCallback, EnvironmentDumpCallback, TrainerInfo, SklearnCheckpoint, WandbCheckpoint, TrackioCheckpoint, SwanLabCheckpoint, ModuleSummary, SLURMInfo, LogUnusedParametersOnce, HuggingFaceCheckpointCallback, HardwareMonitor
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+14:14:05 | INFO  | module.py   | Setting up DataModule
+14:14:05 | INFO  | utils.py    | ── SIGTERM preempt handler — install ─────────────
+14:14:05 | INFO  | manager.py  |   SLURM_JOB_ID         = None
+14:14:05 | INFO  | manager.py  |   SLURM_RESTART_COUNT  = '0'
+14:14:05 | INFO  | manager.py  |   SLURM_PROCID         = '?'
+14:14:05 | INFO  | manager.py  |   SLURM_NODEID         = '?'
+14:14:05 | INFO  | manager.py  |   → not under SLURM (SLURM_JOB_ID unset); leaving SIGTERM handler as-is. Forwarding to submitit's USR signal would be a no-op since submitit isn't running upstream.
+14:14:05 | WARN  | manager.py  | User didn't specify seed, runs won't be exactly reproducible!
+14:14:05 | INFO  | manager.py  |   Manager init: ckpt_path=None, weights_only=True
+14:14:05 | INFO  | utils.py    | ── WorkingDirectory ──────────────────────────────
+14:14:05 | INFO  | manager.py  |   cwd: /workspace/scripts
+14:14:05 | INFO  | utils.py    | ── Seed ──────────────────────────────────────────
+14:14:05 | INFO  | manager.py  |   seed: None
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/fabric/utilities/seed.py:44: No seed found, seed set to 0
+Seed set to 0
+14:14:05 | INFO  | utils.py    | ── RunDirectory ──────────────────────────────────
+14:14:05 | INFO  | manager.py  |   cache_dir = /home/developer/.cache/stable-pretraining
+14:14:05 | INFO  | manager.py  |   ddp: launch_key=(single-process) rank=0 is_rank_zero=True
+14:14:05 | INFO  | utils.py    | ── RunDirectory: requeue probe ───────────────────
+14:14:05 | INFO  | manager.py  |   SLURM session key   = (no SLURM)
+14:14:05 | INFO  | manager.py  |   SLURM_RESTART_COUNT = 0
+14:14:05 | INFO  | manager.py  |   in_requeue          = False
+14:14:05 | INFO  | utils.py    | ── RunDirectory: fresh ───────────────────────────
+14:14:05 | INFO  | manager.py  |   no user ckpt_path — training from scratch / pretrained backbone.
+14:14:05 | INFO  | manager.py  |   created run_dir = /home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f
+14:14:05 | INFO  | manager.py  |   wrote run_meta.json with run_id=0ce29c177b7f
+14:14:05 | INFO  | manager.py  |   SLURM index = (no SLURM, skipped)
+14:14:05 | WARN  | manager.py  | ! cache_dir is set but the Trainer was passed as an already-instantiated object. Cannot override default_root_dir cleanly. Consider passing the trainer as a config dict instead.
+14:14:05 | INFO  | logger.py   | [RegistryLogger] run_id=0ce29c177b7f run_dir=/home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f — sidecar.json + summary.json + metrics.csv will live here
+14:14:05 | INFO  | utils.py    | ── RegistryLogger ────────────────────────────────
+14:14:05 | INFO  | manager.py  |   run_dir: /home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f
+14:14:05 | INFO  | manager.py  |   run_id:  0ce29c177b7f
+14:14:05 | INFO  | utils.py    | ── CSVLogger ─────────────────────────────────────
+14:14:05 | INFO  | manager.py  |   root_dir: /home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f/
+14:14:05 | INFO  | manager.py  |   save_dir: /home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f
+14:14:05 | INFO  | manager.py  |   log_dir: /home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f/
+14:14:05 | INFO  | utils.py    | ── SignalHandlers (after submitit setup (spt SIGTERM installed in __init__)) ──
+14:14:05 | INFO  | manager.py  |   SIGUSR1  → SIG_DFL (default OS action — terminate process)
+14:14:05 | INFO  | manager.py  |   SIGUSR2  → SIG_DFL (default OS action — terminate process)
+14:14:05 | INFO  | manager.py  |   SIGCONT  → SIG_DFL (default OS action — terminate process)
+14:14:05 | INFO  | manager.py  |   SIGTERM  → SIG_DFL (default OS action — terminate process)
+14:14:05 | INFO  | utils.py    | ── Callbacks ─────────────────────────────────────
+14:14:05 | INFO  | manager.py  |   count: 18
+14:14:05 | INFO  | utils.py    | ── CacheDirCheckpointing ─────────────────────────
+14:14:05 | INFO  | manager.py  |   Saving checkpoints to: /home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f/checkpoints
+14:14:05 | WARN  | manager.py  |   Redirecting HuggingFaceCheckpointCallback from 'hf_exports' to '/home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f/hf_exports' (cache_dir is active — prevents races on a shared cache)
+14:14:05 | INFO  | manager.py  |   Added requeue checkpoint (filename='last')
+14:14:05 | INFO  | utils.py    | ── LoadPath resolution ───────────────────────────
+14:14:05 | INFO  | manager.py  |   in_requeue = False
+14:14:05 | INFO  | manager.py  |   user ckpt_path = None
+14:14:05 | INFO  | manager.py  |   user weights_only = True
+14:14:05 | INFO  | manager.py  |   → no ckpt_path; training from scratch.
+14:14:05 | INFO  | utils.py    | ── TrainerFit ────────────────────────────────────
+14:14:05 | INFO  | manager.py  |   ckpt_path:     None
+14:14:05 | INFO  | manager.py  |   weights_only:  None
+14:14:05 | INFO  | utils.py    | ── SignalHandlers (before Trainer.fit() (handler installed in __init__)) ──
+14:14:05 | INFO  | manager.py  |   SIGUSR1  → SIG_DFL (default OS action — terminate process)
+14:14:05 | INFO  | manager.py  |   SIGUSR2  → SIG_DFL (default OS action — terminate process)
+14:14:05 | INFO  | manager.py  |   SIGCONT  → SIG_DFL (default OS action — terminate process)
+14:14:05 | INFO  | manager.py  |   SIGTERM  → SIG_DFL (default OS action — terminate process)
+14:14:05 | INFO  | manager.py  |   → entering Trainer.fit(); lightning's _SignalConnector will now register its own handlers. SIGTERM will become _HandlersCompose([_sigterm_notifier_fn, _sigterm_handler_fn, spt._handler]); USR-sig binding from submitit is preserved (lightning skips USR registration when one already exists).
+You are using a CUDA device ('NVIDIA GeForce RTX 5090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+14:14:05 | OK    | module.py   | ✓ dataset for TrainerFn.FITTING loaded
+14:14:05 | INFO  | module.py   |   setup was done by user
+14:14:05 | INFO  | utils.py    | ── EnvironmentDump ───────────────────────────────
+14:14:05 | INFO  | env_info.py |   log_dir: /home/developer/.cache/stable-pretraining
+14:14:05 | INFO  | env_info.py |   Running environment dump in background thread (non-blocking)
+14:14:05 | INFO  | env_info.py |   Collecting environment information...
+14:14:05 | OK    | env_info.py | ✓ Background thread started successfully
+14:14:05 | OK    | env_info.py | ✓ Python 3.12.13
+14:14:05 | INFO  | trainer_inf~|   linking trainer to DataModule
+14:14:05 | OK    | env_info.py | ✓ System: Linux 6.17.0-35-generic (x86_64)
+14:14:05 | INFO  | utils.py    | ── Callbacks (in order) ──────────────────────────
+14:14:05 | INFO  | env_info.py |   Hostname: 0d04d6547735
+14:14:05 | INFO  | utils.py    |     [ 0] LatentDiagnosticsCallback
+14:14:05 | INFO  | utils.py    |     [ 1] RichProgressBar
+14:14:05 | INFO  | utils.py    |     [ 2] RichModelSummary
+14:14:05 | INFO  | utils.py    |     [ 3] PrintProgressBar
+14:14:05 | INFO  | utils.py    |     [ 4] ModuleRegistryCallback
+14:14:05 | INFO  | utils.py    |     [ 5] LoggingCallback
+14:14:05 | INFO  | utils.py    |     [ 6] EnvironmentDumpCallback
+14:14:05 | INFO  | utils.py    |     [ 7] TrainerInfo
+14:14:05 | INFO  | utils.py    |     [ 8] SklearnCheckpoint
+14:14:05 | INFO  | utils.py    |     [ 9] WandbCheckpoint
+14:14:05 | INFO  | utils.py    |     [10] TrackioCheckpoint
+14:14:05 | INFO  | utils.py    |     [11] SwanLabCheckpoint
+14:14:05 | INFO  | utils.py    |     [12] ModuleSummary
+14:14:05 | INFO  | utils.py    |     [13] SLURMInfo
+14:14:05 | INFO  | utils.py    |     [14] LogUnusedParametersOnce
+14:14:05 | INFO  | utils.py    |     [15] HuggingFaceCheckpointCallback
+14:14:05 | INFO  | utils.py    |     [16] HardwareMonitor
+14:14:05 | INFO  | utils.py    |     [17] _RunDirCallback
+14:14:05 | INFO  | utils.py    |     [18] ModelCheckpoint
+14:14:05 | INFO  | utils.py    |   ⚑ marks order-sensitive callbacks; see AGENTS.md → Callback ordering for the full rules.
+14:14:05 | INFO  | utils.py    | ── SklearnCheckpoint ─────────────────────────────
+14:14:05 | INFO  | checkpoint_~|   Sklearn Modules:
+14:14:05 | INFO  | checkpoint_~| 
+┏━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
+┃ Module   ┃ Name   ┃ Type   ┃
+┣━━━━━━━━━━╋━━━━━━━━╋━━━━━━━━┫
+┗━━━━━━━━━━┻━━━━━━━━┻━━━━━━━━┛
+14:14:05 | INFO  | utils.py    | ── WandbCheckpoint ───────────────────────────────
+14:14:05 | INFO  | utils.py    | ── TrackioCheckpoint ─────────────────────────────
+14:14:05 | INFO  | utils.py    | ── SwanLabCheckpoint ─────────────────────────────
+14:14:05 | INFO  | utils.py    | ── PyTorch Modules ───────────────────────────────
+14:14:05 | WARN  | module.py   | ! You are calling self.parameters which also gives callbacks parameters, to remove them, pass `with_callbacks=False`
+14:14:05 | INFO  | trainer_inf~| \n+---------------------------------------------------------+----------------------+--------------------------+--------------------------+---------+
+| Module                                                  | Trainable parameters | Non Trainable parameters | Uninitialized parameters | Buffers |
++---------------------------------------------------------+----------------------+--------------------------+--------------------------+---------+
+|                                                         |             18034448 |                        0 |                        0 |    8245 |
+| callbacks_modules                                       |                    0 |                        0 |                        0 |       0 |
+| callbacks_metrics                                       |                    0 |                        0 |                        0 |       0 |
+| model                                                   |             18034448 |                        0 |                        0 |    8194 |
+| model.encoder                                           |              5501376 |                        0 |                        0 |       0 |
+| model.encoder.embeddings                                |               162624 |                        0 |                        0 |       0 |
+| model.encoder.embeddings.patch_embeddings               |               113088 |                        0 |                        0 |       0 |
+| model.encoder.embeddings.patch_embeddings.projection    |               113088 |                        0 |                        0 |       0 |
+| model.encoder.embeddings.dropout                        |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers                                    |              5338368 |                        0 |                        0 |       0 |
+| model.encoder.layers.0                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.0.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.1                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.1.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.2                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.2.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.3                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.3.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.4                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.4.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.5                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.5.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.6                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.6.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.7                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.7.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.8                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.8.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.9                                  |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.attention                        |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.attention.q_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.attention.k_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.attention.v_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.attention.o_proj                 |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.layernorm_before                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.layernorm_after                  |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.mlp                              |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.mlp.activation_fn                |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.mlp.fc1                          |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.mlp.fc2                          |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.9.dropout                          |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.10                                 |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.attention                       |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.attention.q_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.attention.k_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.attention.v_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.attention.o_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.layernorm_before                |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.layernorm_after                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.mlp                             |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.mlp.activation_fn               |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.mlp.fc1                         |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.mlp.fc2                         |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.10.dropout                         |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.11                                 |               444864 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.attention                       |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.attention.q_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.attention.k_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.attention.v_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.attention.o_proj                |                37056 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.layernorm_before                |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.layernorm_after                 |                  384 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.mlp                             |               295872 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.mlp.activation_fn               |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.mlp.fc1                         |               148224 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.mlp.fc2                         |               147648 |                        0 |                        0 |       0 |
+| model.encoder.layers.11.dropout                         |                    0 |                        0 |                        0 |       0 |
+| model.encoder.layernorm                                 |                  384 |                        0 |                        0 |       0 |
+| model.predictor                                         |             10791360 |                        0 |                        0 |       0 |
+| model.predictor.dropout                                 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer                             |             10790784 |                        0 |                        0 |       0 |
+| model.predictor.transformer.norm                        |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers                      |             10790400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0                    |              1798400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn               |               787008 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn.norm          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn.attend        |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn.to_qkv        |               589824 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn.to_out        |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn.to_out.0      |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.attn.to_out.1      |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp                |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net            |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net.0          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net.1          |               395264 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net.2          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net.3          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net.4          |               393408 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.mlp.net.5          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.norm1              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.norm2              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.adaLN_modulation   |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.adaLN_modulation.0 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.0.adaLN_modulation.1 |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1                    |              1798400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn               |               787008 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn.norm          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn.attend        |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn.to_qkv        |               589824 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn.to_out        |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn.to_out.0      |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.attn.to_out.1      |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp                |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net            |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net.0          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net.1          |               395264 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net.2          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net.3          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net.4          |               393408 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.mlp.net.5          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.norm1              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.norm2              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.adaLN_modulation   |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.adaLN_modulation.0 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.1.adaLN_modulation.1 |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2                    |              1798400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn               |               787008 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn.norm          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn.attend        |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn.to_qkv        |               589824 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn.to_out        |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn.to_out.0      |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.attn.to_out.1      |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp                |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net            |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net.0          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net.1          |               395264 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net.2          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net.3          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net.4          |               393408 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.mlp.net.5          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.norm1              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.norm2              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.adaLN_modulation   |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.adaLN_modulation.0 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.2.adaLN_modulation.1 |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3                    |              1798400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn               |               787008 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn.norm          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn.attend        |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn.to_qkv        |               589824 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn.to_out        |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn.to_out.0      |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.attn.to_out.1      |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp                |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net            |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net.0          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net.1          |               395264 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net.2          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net.3          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net.4          |               393408 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.mlp.net.5          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.norm1              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.norm2              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.adaLN_modulation   |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.adaLN_modulation.0 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.3.adaLN_modulation.1 |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4                    |              1798400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn               |               787008 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn.norm          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn.attend        |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn.to_qkv        |               589824 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn.to_out        |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn.to_out.0      |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.attn.to_out.1      |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp                |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net            |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net.0          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net.1          |               395264 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net.2          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net.3          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net.4          |               393408 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.mlp.net.5          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.norm1              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.norm2              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.adaLN_modulation   |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.adaLN_modulation.0 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.4.adaLN_modulation.1 |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5                    |              1798400 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn               |               787008 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn.norm          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn.attend        |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn.to_qkv        |               589824 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn.to_out        |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn.to_out.0      |               196800 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.attn.to_out.1      |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp                |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net            |               789056 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net.0          |                  384 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net.1          |               395264 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net.2          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net.3          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net.4          |               393408 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.mlp.net.5          |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.norm1              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.norm2              |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.adaLN_modulation   |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.adaLN_modulation.0 |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.layers.5.adaLN_modulation.1 |               222336 |                        0 |                        0 |       0 |
+| model.predictor.transformer.input_proj                  |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.cond_proj                   |                    0 |                        0 |                        0 |       0 |
+| model.predictor.transformer.output_proj                 |                    0 |                        0 |                        0 |       0 |
+| model.action_encoder                                    |               156176 |                        0 |                        0 |       0 |
+| model.action_encoder.patch_embed                        |                   80 |                        0 |                        0 |       0 |
+| model.action_encoder.embed                              |               156096 |                        0 |                        0 |       0 |
+| model.action_encoder.embed.0                            |                 8448 |                        0 |                        0 |       0 |
+| model.action_encoder.embed.1                            |                    0 |                        0 |                        0 |       0 |
+| model.action_encoder.embed.2                            |               147648 |                        0 |                        0 |       0 |
+| model.projector                                         |               792768 |                        0 |                        0 |    4097 |
+| model.projector.net                                     |               792768 |                        0 |                        0 |    4097 |
+| model.projector.net.0                                   |               395264 |                        0 |                        0 |       0 |
+| model.projector.net.1                                   |                 4096 |                        0 |                        0 |    4097 |
+| model.projector.net.2                                   |                    0 |                        0 |                        0 |       0 |
+| model.projector.net.3                                   |               393408 |                        0 |                        0 |       0 |
+| model.pred_proj                                         |               792768 |                        0 |                        0 |    4097 |
+| model.pred_proj.net                                     |               792768 |                        0 |                        0 |    4097 |
+| model.pred_proj.net.0                                   |               395264 |                        0 |                        0 |       0 |
+| model.pred_proj.net.1                                   |                 4096 |                        0 |                        0 |    4097 |
+| model.pred_proj.net.2                                   |                    0 |                        0 |                        0 |       0 |
+| model.pred_proj.net.3                                   |               393408 |                        0 |                        0 |       0 |
+| sigreg                                                  |                    0 |                        0 |                        0 |      51 |
++---------------------------------------------------------+----------------------+--------------------------+--------------------------+---------+
+14:14:05 | INFO  | utils.py    | ── SLURM ─────────────────────────────────────────
+14:14:05 | INFO  | trainer_inf~|   Job ID: N/A
+14:14:05 | INFO  | trainer_inf~|   Task ID: N/A
+14:14:05 | INFO  | trainer_inf~|   Job Name: N/A
+14:14:05 | INFO  | trainer_inf~|   Nodes: N/A
+14:14:05 | INFO  | trainer_inf~|   Tasks: N/A
+14:14:05 | INFO  | trainer_inf~|   CPUs per node: N/A
+14:14:05 | INFO  | trainer_inf~|   CPUs per task: N/A
+14:14:05 | INFO  | trainer_inf~|   Memory per node: N/A
+14:14:05 | INFO  | trainer_inf~|   Memory per CPU: N/A
+14:14:05 | INFO  | trainer_inf~|   Time limit: N/A
+14:14:05 | INFO  | trainer_inf~|   Partition: N/A
+14:14:05 | INFO  | trainer_inf~|   Node List: N/A
+14:14:05 | INFO  | trainer_inf~|   Submit Directory: N/A
+14:14:05 | INFO  | utils.py    | ── HardwareMonitor ───────────────────────────────
+14:14:05 | INFO  | hardware_mo~|   interval: 10.0s
+14:14:05 | INFO  | hardware_mo~|   prefix:   'hardware/'
+14:14:05 | INFO  | hardware_mo~|   metrics:  cpu=True ram=True disk=True net=True gpu=True
+14:14:05 | INFO  | hardware_mo~|   per-rank: rank 0 only
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+14:14:05 | WARN  | hardware_mo~| HardwareMonitor: pynvml unavailable (ModuleNotFoundError("No module named 'pynvml'")); GPU metrics disabled.
+14:14:05 | WARN  | env_info.py | ! pip freeze failed: Command '['/workspace/.pixi/envs/default/bin/python', '-m', 'pip', 'freeze']' returned non-zero exit status 1.
+14:14:05 | OK    | env_info.py | ✓ Packages: 0 packages collected in 0.02s
+14:14:05 | INFO  | utils.py    | ── Optimizers ────────────────────────────────────
+14:14:05 | INFO  | module.py   |   Optimizer specified by Dict with keys ['model_opt']
+14:14:05 | INFO  | module.py   | 
+┏━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Optimizer   ┃ Pattern   ┃   Matched Modules ┃   Param Tensors ┃   Total Params ┃   RequiresGrad Tensors ┃
+┣━━━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ model_opt   ┃ model     ┃               316 ┃             297 ┃       18034448 ┃                    297 ┃
+┗━━━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━━┛
+14:14:05 | INFO  | lr_schedule~| 	User provided a dict
+14:14:05 | INFO  | module.py   |   Configured optimizer 'model_opt' (modules=316, param_tensors=297, total_params=18034448) with LinearWarmupCosineAnnealingLR scheduler.
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/pytorch/utilities/model_summary/model_summary.py:242: Precision bf16-mixed is not supported by the model summary.  Estimated model size in MB will not be accurate. Using 32 bits instead.
+14:14:05 | OK    | env_info.py | ✓ NVIDIA Driver: 580.159.03
+┏━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name              ┃ Type       ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ callbacks_modules │ ModuleDict │      0 │ train │     0 │
+│ 1 │ callbacks_metrics │ ModuleDict │      0 │ train │     0 │
+│ 2 │ model             │ LeWM       │ 18.0 M │ train │     0 │
+│ 3 │ sigreg            │ SIGReg     │      0 │ train │     0 │
+└───┴───────────────────┴────────────┴────────┴───────┴───────┘
+Trainable params: 18.0 M                                                        
+Non-trainable params: 0                                                         
+Total params: 18.0 M                                                            
+Total estimated model params size (MB): 72.138                                  
+Modules in train mode: 319                                                      
+Modules in eval mode: 0                                                         
+Total FLOPs: 0                                                                  
+14:14:05 | OK    | env_info.py | ✓ Git: stage2/prediction-eval @ aa584ed5
+14:14:05 | INFO  | env_info.py |   Remote: git@github.com:barikata1984/jepa.git
+14:14:05 | WARN  | env_info.py | ! Working directory has uncommitted changes
+14:14:05 | OK    | env_info.py | ✓ Environment: 5 relevant variables captured
+14:14:05 | INFO  | env_info.py |   Serializing environment data...
+14:14:05 | INFO  | logger.py   | [RegistryLogger] summary.json flushed (0 metrics, step=0, epoch=0) → /home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f/summary.json
+14:14:05 | WARN  | module.py   | could not set pl_trainer to train dataset
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/pytorch/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+14:14:05 | INFO  | env_info.py |   File exists, using version 16: environment_v16.json
+14:14:05 | INFO  | env_info.py |   File exists, using version 16: requirements_frozen_v16.txt
+14:14:05 | INFO  | env_info.py |   Save directory: /home/developer/.cache/stable-pretraining
+14:14:05 | INFO  | env_info.py |   Writing environment to temp file...
+14:14:05 | INFO  | env_info.py |   Moving to: environment_v16.json
+14:14:05 | OK    | env_info.py | ✓ Environment file saved (2.4 KB)
+14:14:05 | OK    | env_info.py | ✓ Requirements file saved (0.1 KB)
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lance/__init__.py:320: UserWarning: lance is not fork-safe. If you are using multiprocessing, use spawn or forkserver instead.
+  warnings.warn(
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+14:14:05 | INFO  | __init__.py | Using video codec: libsvtav1
+14:14:05 | INFO  | __init__.py | Using video codec: libsvtav1
+14:14:05 | INFO  | __init__.py | Using video codec: libsvtav1
+14:14:05 | INFO  | __init__.py | Using video codec: libsvtav1
+14:14:05 | INFO  | __init__.py | Using video codec: libsvtav1
+14:14:05 | WARN  | module.py   | could not set pl_trainer to train dataset
+14:14:05 | INFO  | __init__.py | Using video codec: libsvtav1
+14:14:05 | WARN  | hf_models.py| ! No Hugging Face (PreTrainedModel) submodules found in LightningModule.
+14:14:05 | INFO  | utils.py    | ── Optimizers ────────────────────────────────────
+14:14:05 | INFO  | module.py   |   self.optimizers() gave us 1 optimizers
+14:14:05 | WARN  | module.py   | ! No clip val found for optimizer default_0
+14:14:05 | WARN  | module.py   | ! Will use the Trainer's value of 1.0
+14:14:05 | WARN  | module.py   | ! No clip algorithm found for optimizer default_0
+14:14:05 | WARN  | module.py   | ! Will use the Trainer's value of None
+14:14:05 | OK    | module.py   | ✓ Optimizer check complete:
++------------+-----------+----------------+-----------+-----------+
+| Opt. Index | Opt. name |      opt       | clip val. | clip alg. |
++------------+-----------+----------------+-----------+-----------+
+|     0      | default_0 | LightningAdamW |    1.0    |    None   |
++------------+-----------+----------------+-----------+-----------+
+14:14:05 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:14:05 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:14:05 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:14:05 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:14:05 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:14:06 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+14:14:06 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]14:14:06 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+14:14:06 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 10420.63it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 28435.96it/s]
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 7817.90it/s]
+Using custom data configuration default-2c7d921dc92e95a7
+14:14:06 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Using custom data configuration default-2c7d921dc92e95a7
+14:14:06 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 238.65it/s]
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-2c7d921dc92e95a7
+14:14:06 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-2c7d921dc92e95a7
+14:14:06 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+14:14:06 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+14:14:06 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+14:14:06 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 12237.21it/s]
+Using custom data configuration default-2c7d921dc92e95a7
+14:14:06 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Using custom data configuration default-5537df0288986c40
+14:14:06 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+14:14:06 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:14:06 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 19373.23it/s]
+Using custom data configuration default-2c7d921dc92e95a7
+14:14:06 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+14:14:06 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:06 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:14:30 | INFO  | utils.py    | ── LogUnusedParametersOnce ───────────────────────
+14:14:30 | INFO  | unused_para~|   registered hooks on 297 leaf parameters
+14:14:32 | OK    | unused_para~| ✓ all tracked parameters received gradients on the first backward pass
+14:14:32 | INFO  | unused_para~|   hooks removed, callback disabled
+[Epoch 0/5] step 50/667 (0.4 it/s)
+[Epoch 0/5] step 100/667 (0.5 it/s)
+[Epoch 0/5] step 150/667 (0.5 it/s)
+[Epoch 0/5] step 200/667 (0.6 it/s)
+[Epoch 0/5] step 250/667 (0.6 it/s)
+[Epoch 0/5] step 300/667 (0.6 it/s)
+[Epoch 0/5] step 350/667 (0.6 it/s)
+[Epoch 0/5] step 400/667 (0.6 it/s)
+[Epoch 0/5] step 450/667 (0.6 it/s)
+[Epoch 0/5] step 500/667 (0.6 it/s)
+[Epoch 0/5] step 550/667 (0.6 it/s)
+[Epoch 0/5] step 600/667 (0.6 it/s)
+[Epoch 0/5] step 650/667 (0.6 it/s)
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+14:31:32 | INFO  | __init__.py | Using video codec: libsvtav1
+14:31:32 | INFO  | __init__.py | Using video codec: libsvtav1
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+14:31:32 | INFO  | __init__.py | Using video codec: libsvtav1
+14:31:32 | INFO  | __init__.py | Using video codec: libsvtav1
+14:31:32 | INFO  | __init__.py | Using video codec: libsvtav1
+14:31:32 | INFO  | __init__.py | Using video codec: libsvtav1
+14:31:32 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:31:32 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:31:32 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:31:32 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:31:32 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:31:32 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+14:31:32 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+14:31:32 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+14:31:32 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+14:31:32 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+14:31:32 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+14:31:32 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 12192.74it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 15321.66it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 15321.66it/s]
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 20460.02it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 51622.20it/s]
+Using custom data configuration default-2c7d921dc92e95a7
+Using custom data configuration default-2c7d921dc92e95a7
+Using custom data configuration default-2c7d921dc92e95a7
+14:31:32 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+14:31:32 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+14:31:32 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Using custom data configuration default-2c7d921dc92e95a7
+14:31:32 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Using custom data configuration default-2c7d921dc92e95a7
+14:31:32 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:31:32 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 15694.31it/s]
+Using custom data configuration default-2c7d921dc92e95a7
+14:31:32 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:31:32 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+14:31:32 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:31:32 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+14:31:32 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:31:32 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:31:32 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:31:32 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+14:31:32 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:31:32 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+14:31:32 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:31:32 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:31:32 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+14:31:32 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:31:32 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:31:32 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+14:31:32 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+14:31:32 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/pytorch/utilities/data.py:79: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 126. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/pytorch/utilities/data.py:79: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 124. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/pytorch/utilities/data.py:79: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 125. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/pytorch/utilities/data.py:79: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 123. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/pytorch/utilities/data.py:79: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 127. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/pytorch/utilities/data.py:79: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 122. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/pytorch/utilities/data.py:79: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 128. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/pytorch/utilities/data.py:79: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 121. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/pytorch/utilities/data.py:79: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 120. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lightning/pytorch/utilities/data.py:79: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 21. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+
+[Diagnostics] Epoch 0: effective_rank=37.9/192, pred_loss=0.063073, sigreg_loss=19.964583, ratio=316.53
+  Top-5 singular values: [590.75, 351.3, 327.11, 304.23, 291.77]
+14:33:24 | INFO  | trainer_inf~| \n+-------------------------------+----------------------+
+|             Metric            |        Value         |
++-------------------------------+----------------------+
+|   [0;34;40mdiagnostics/effective_rank[0m  |  [0;32;40m37.889122009277344[0m  |
+| [0;34;40mdiagnostics/sigreg_pred_ratio[0m |  [0;32;40m316.5291748046875[0m   |
+|            [0;34;40mfit/loss[0m           |  [0;32;40m0.2994803488254547[0m  |
+|         [0;34;40mfit/pred_loss[0m         | [0;32;40m0.027995970100164413[0m |
+|        [0;34;40mfit/sigreg_loss[0m        |       [0;32;40m3.015625[0m       |
+|      [0;34;40mhardware/cpu_percent[0m     |  [0;32;40m27.700000762939453[0m  |
+|    [0;34;40mhardware/disk_read_mb_s[0m    |         [0;32;40m0.0[0m          |
+|    [0;34;40mhardware/disk_write_mb_s[0m   | [0;32;40m0.021089963614940643[0m |
+|     [0;34;40mhardware/net_recv_mb_s[0m    | [0;32;40m0.004723177757114172[0m |
+|     [0;34;40mhardware/net_sent_mb_s[0m    | [0;32;40m0.004723177757114172[0m |
+|      [0;34;40mhardware/ram_used_gb[0m     |  [0;32;40m49.20210266113281[0m   |
+|     [0;34;40mhardware/ram_used_pct[0m     |  [0;32;40m39.20000076293945[0m   |
+|      [0;34;40mhparams/lr_default_0[0m     | [0;32;40m4.55880981462542e-05[0m |
+|         [0;34;40mvalidate/loss[0m         |  [0;32;40m1.8763318061828613[0m  |
+|      [0;34;40mvalidate/loss_epoch[0m      |  [0;32;40m1.8763318061828613[0m  |
+|       [0;34;40mvalidate/pred_loss[0m      | [0;32;40m0.06309334188699722[0m  |
+|    [0;34;40mvalidate/pred_loss_epoch[0m   | [0;32;40m0.06309334188699722[0m  |
+|      [0;34;40mvalidate/sigreg_loss[0m     |  [0;32;40m20.14920425415039[0m   |
+|   [0;34;40mvalidate/sigreg_loss_epoch[0m  |  [0;32;40m20.14920425415039[0m   |
++-------------------------------+----------------------+
+[Epoch 0/5] done in 1159.2s
+14:33:24 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+14:33:24 | INFO  | atomic_chec~| [atomic_save] → /home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f/checkpoints/last.ckpt
+14:33:25 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.17s write=0.12s rename=0.1ms)
+[Epoch 1/5] step 50/667 (0.6 it/s)
+[Epoch 1/5] step 100/667 (0.6 it/s)
+[Epoch 1/5] step 150/667 (0.7 it/s)
+[Epoch 1/5] step 200/667 (0.7 it/s)
+[Epoch 1/5] step 250/667 (0.7 it/s)
+[Epoch 1/5] step 300/667 (0.7 it/s)
+[Epoch 1/5] step 350/667 (0.7 it/s)
+[Epoch 1/5] step 400/667 (0.7 it/s)
+[Epoch 1/5] step 450/667 (0.7 it/s)
+[Epoch 1/5] step 500/667 (0.8 it/s)
+[Epoch 1/5] step 550/667 (0.7 it/s)
+[Epoch 1/5] step 600/667 (0.7 it/s)
+[Epoch 1/5] step 650/667 (0.7 it/s)
+
+[Diagnostics] Epoch 1: effective_rank=37.9/192, pred_loss=0.036893, sigreg_loss=23.961250, ratio=649.48
+  Top-5 singular values: [627.48, 382.82, 325.59, 286.7, 275.7]
+14:50:15 | INFO  | trainer_inf~| \n+-------------------------------+-----------------------+
+|             Metric            |         Value         |
++-------------------------------+-----------------------+
+|   [0;34;40mdiagnostics/effective_rank[0m  |   [0;32;40m37.88581466674805[0m   |
+| [0;34;40mdiagnostics/sigreg_pred_ratio[0m |   [0;32;40m649.4768676757812[0m   |
+|            [0;34;40mfit/loss[0m           |  [0;32;40m0.21246978640556335[0m  |
+|         [0;34;40mfit/pred_loss[0m         |  [0;32;40m0.018133848905563354[0m |
+|        [0;34;40mfit/sigreg_loss[0m        |        [0;32;40m2.15625[0m        |
+|      [0;34;40mhardware/cpu_percent[0m     |   [0;32;40m27.399999618530273[0m  |
+|    [0;34;40mhardware/disk_read_mb_s[0m    |          [0;32;40m0.0[0m          |
+|    [0;34;40mhardware/disk_write_mb_s[0m   |  [0;32;40m0.35776951909065247[0m  |
+|     [0;34;40mhardware/net_recv_mb_s[0m    |   [0;32;40m0.0181104838848114[0m  |
+|     [0;34;40mhardware/net_sent_mb_s[0m    |  [0;32;40m0.01804068312048912[0m  |
+|      [0;34;40mhardware/ram_used_gb[0m     |   [0;32;40m47.82553482055664[0m   |
+|     [0;34;40mhardware/ram_used_pct[0m     |   [0;32;40m38.099998474121094[0m  |
+|      [0;34;40mhparams/lr_default_0[0m     | [0;32;40m3.317193113616668e-05[0m |
+|         [0;34;40mvalidate/loss[0m         |   [0;32;40m2.212646722793579[0m   |
+|      [0;34;40mvalidate/loss_epoch[0m      |   [0;32;40m2.212646722793579[0m   |
+|       [0;34;40mvalidate/pred_loss[0m      |  [0;32;40m0.03689363971352577[0m  |
+|    [0;34;40mvalidate/pred_loss_epoch[0m   |  [0;32;40m0.03689363971352577[0m  |
+|      [0;34;40mvalidate/sigreg_loss[0m     |   [0;32;40m24.171096801757812[0m  |
+|   [0;34;40mvalidate/sigreg_loss_epoch[0m  |   [0;32;40m24.171096801757812[0m  |
++-------------------------------+-----------------------+
+[Epoch 1/5] done in 1010.5s
+14:50:15 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+14:50:15 | INFO  | atomic_chec~| [atomic_save] → /home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f/checkpoints/last.ckpt
+14:50:16 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.20s write=0.15s rename=9.8ms)
+[Epoch 2/5] step 50/667 (0.6 it/s)
+[Epoch 2/5] step 100/667 (0.6 it/s)
+[Epoch 2/5] step 150/667 (0.7 it/s)
+[Epoch 2/5] step 200/667 (0.7 it/s)
+[Epoch 2/5] step 250/667 (0.7 it/s)
+[Epoch 2/5] step 300/667 (0.7 it/s)
+[Epoch 2/5] step 350/667 (0.7 it/s)
+[Epoch 2/5] step 400/667 (0.7 it/s)
+[Epoch 2/5] step 450/667 (0.7 it/s)
+[Epoch 2/5] step 500/667 (0.7 it/s)
+[Epoch 2/5] step 550/667 (0.7 it/s)
+[Epoch 2/5] step 600/667 (0.7 it/s)
+[Epoch 2/5] step 650/667 (0.7 it/s)
+
+[Diagnostics] Epoch 2: effective_rank=44.8/192, pred_loss=0.028450, sigreg_loss=11.457708, ratio=402.73
+  Top-5 singular values: [460.09, 315.46, 299.39, 284.01, 261.57]
+15:08:19 | INFO  | trainer_inf~| \n+-------------------------------+------------------------+
+|             Metric            |         Value          |
++-------------------------------+------------------------+
+|   [0;34;40mdiagnostics/effective_rank[0m  |   [0;32;40m44.834632873535156[0m   |
+| [0;34;40mdiagnostics/sigreg_pred_ratio[0m |   [0;32;40m402.72564697265625[0m   |
+|            [0;34;40mfit/loss[0m           |  [0;32;40m0.19268068671226501[0m   |
+|         [0;34;40mfit/pred_loss[0m         |  [0;32;40m0.01592288166284561[0m   |
+|        [0;34;40mfit/sigreg_loss[0m        |        [0;32;40m1.96875[0m         |
+|      [0;34;40mhardware/cpu_percent[0m     |          [0;32;40m26.5[0m          |
+|    [0;34;40mhardware/disk_read_mb_s[0m    |          [0;32;40m0.0[0m           |
+|    [0;34;40mhardware/disk_write_mb_s[0m   |  [0;32;40m0.09959844499826431[0m   |
+|     [0;34;40mhardware/net_recv_mb_s[0m    | [0;32;40m0.0011476210784167051[0m  |
+|     [0;34;40mhardware/net_sent_mb_s[0m    |  [0;32;40m0.002825903706252575[0m  |
+|      [0;34;40mhardware/ram_used_gb[0m     |   [0;32;40m52.010738372802734[0m   |
+|     [0;34;40mhardware/ram_used_pct[0m     |          [0;32;40m41.5[0m          |
+|      [0;34;40mhparams/lr_default_0[0m     | [0;32;40m1.7573778677615337e-05[0m |
+|         [0;34;40mvalidate/loss[0m         |   [0;32;40m1.068585991859436[0m    |
+|      [0;34;40mvalidate/loss_epoch[0m      |   [0;32;40m1.068585991859436[0m    |
+|       [0;34;40mvalidate/pred_loss[0m      |   [0;32;40m0.0284836757928133[0m   |
+|    [0;34;40mvalidate/pred_loss_epoch[0m   |   [0;32;40m0.0284836757928133[0m   |
+|      [0;34;40mvalidate/sigreg_loss[0m     |   [0;32;40m11.555269241333008[0m   |
+|   [0;34;40mvalidate/sigreg_loss_epoch[0m  |   [0;32;40m11.555269241333008[0m   |
++-------------------------------+------------------------+
+[Epoch 2/5] done in 1083.6s
+15:08:19 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+15:08:19 | INFO  | atomic_chec~| [atomic_save] → /home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f/checkpoints/last.ckpt
+15:08:20 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.18s write=0.13s rename=10.3ms)
+[Epoch 3/5] step 50/667 (0.6 it/s)
+[Epoch 3/5] step 100/667 (0.7 it/s)
+[Epoch 3/5] step 150/667 (0.7 it/s)
+[Epoch 3/5] step 200/667 (0.7 it/s)
+[Epoch 3/5] step 250/667 (0.7 it/s)
+[Epoch 3/5] step 300/667 (0.7 it/s)
+[Epoch 3/5] step 350/667 (0.7 it/s)
+[Epoch 3/5] step 400/667 (0.7 it/s)
+[Epoch 3/5] step 450/667 (0.7 it/s)
+[Epoch 3/5] step 500/667 (0.7 it/s)
+[Epoch 3/5] step 550/667 (0.7 it/s)
+[Epoch 3/5] step 600/667 (0.7 it/s)
+[Epoch 3/5] step 650/667 (0.7 it/s)
+
+[Diagnostics] Epoch 3: effective_rank=48.6/192, pred_loss=0.014622, sigreg_loss=3.420208, ratio=233.91
+  Top-5 singular values: [265.18, 245.32, 242.88, 235.13, 219.88]
+15:26:03 | INFO  | trainer_inf~| \n+-------------------------------+-----------------------+
+|             Metric            |         Value         |
++-------------------------------+-----------------------+
+|   [0;34;40mdiagnostics/effective_rank[0m  |   [0;32;40m48.55834197998047[0m   |
+| [0;34;40mdiagnostics/sigreg_pred_ratio[0m |   [0;32;40m233.9088592529297[0m   |
+|            [0;34;40mfit/loss[0m           |  [0;32;40m0.18967846035957336[0m  |
+|         [0;34;40mfit/pred_loss[0m         |  [0;32;40m0.015850339084863663[0m |
+|        [0;34;40mfit/sigreg_loss[0m        |       [0;32;40m1.9296875[0m       |
+|      [0;34;40mhardware/cpu_percent[0m     |   [0;32;40m32.79999923706055[0m   |
+|    [0;34;40mhardware/disk_read_mb_s[0m    |          [0;32;40m0.0[0m          |
+|    [0;34;40mhardware/disk_write_mb_s[0m   |  [0;32;40m0.032026104629039764[0m |
+|     [0;34;40mhardware/net_recv_mb_s[0m    |  [0;32;40m0.009141121059656143[0m |
+|     [0;34;40mhardware/net_sent_mb_s[0m    |  [0;32;40m0.009141121059656143[0m |
+|      [0;34;40mhardware/ram_used_gb[0m     |   [0;32;40m53.041664123535156[0m  |
+|     [0;34;40mhardware/ram_used_pct[0m     |   [0;32;40m42.29999923706055[0m   |
+|      [0;34;40mhparams/lr_default_0[0m     | [0;32;40m4.867246389039792e-06[0m |
+|         [0;34;40mvalidate/loss[0m         |   [0;32;40m0.3247825503349304[0m  |
+|      [0;34;40mvalidate/loss_epoch[0m      |   [0;32;40m0.3247825503349304[0m  |
+|       [0;34;40mvalidate/pred_loss[0m      |  [0;32;40m0.014642187394201756[0m |
+|    [0;34;40mvalidate/pred_loss_epoch[0m   |  [0;32;40m0.014642187394201756[0m |
+|      [0;34;40mvalidate/sigreg_loss[0m     |   [0;32;40m3.445106267929077[0m   |
+|   [0;34;40mvalidate/sigreg_loss_epoch[0m  |   [0;32;40m3.445106267929077[0m   |
++-------------------------------+-----------------------+
+[Epoch 3/5] done in 1063.7s
+15:26:03 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+15:26:03 | INFO  | atomic_chec~| [atomic_save] → /home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f/checkpoints/last.ckpt
+15:26:04 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.18s write=0.12s rename=11.8ms)
+[Epoch 4/5] step 50/667 (0.7 it/s)
+[Epoch 4/5] step 100/667 (0.6 it/s)
+[Epoch 4/5] step 150/667 (0.7 it/s)
+[Epoch 4/5] step 200/667 (0.7 it/s)
+[Epoch 4/5] step 250/667 (0.7 it/s)
+[Epoch 4/5] step 300/667 (0.7 it/s)
+[Epoch 4/5] step 350/667 (0.7 it/s)
+[Epoch 4/5] step 400/667 (0.7 it/s)
+[Epoch 4/5] step 450/667 (0.7 it/s)
+[Epoch 4/5] step 500/667 (0.7 it/s)
+[Epoch 4/5] step 550/667 (0.7 it/s)
+[Epoch 4/5] step 600/667 (0.7 it/s)
+[Epoch 4/5] step 650/667 (0.7 it/s)
+
+[Diagnostics] Epoch 4: effective_rank=49.2/192, pred_loss=0.012795, sigreg_loss=2.395313, ratio=187.21
+  Top-5 singular values: [218.06, 213.48, 211.28, 207.26, 206.21]
+15:44:03 | INFO  | trainer_inf~| \n+-------------------------------+-----------------------+
+|             Metric            |         Value         |
++-------------------------------+-----------------------+
+|   [0;34;40mdiagnostics/effective_rank[0m  |   [0;32;40m49.165863037109375[0m  |
+| [0;34;40mdiagnostics/sigreg_pred_ratio[0m |   [0;32;40m187.2061309814453[0m   |
+|            [0;34;40mfit/loss[0m           |   [0;32;40m0.1799098551273346[0m  |
+|         [0;34;40mfit/pred_loss[0m         |  [0;32;40m0.01389422919601202[0m  |
+|        [0;34;40mfit/sigreg_loss[0m        |        [0;32;40m1.84375[0m        |
+|      [0;34;40mhardware/cpu_percent[0m     |   [0;32;40m28.799999237060547[0m  |
+|    [0;34;40mhardware/disk_read_mb_s[0m    |          [0;32;40m0.0[0m          |
+|    [0;34;40mhardware/disk_write_mb_s[0m   |  [0;32;40m0.27731385827064514[0m  |
+|     [0;34;40mhardware/net_recv_mb_s[0m    | [0;32;40m9.230573050444946e-05[0m |
+|     [0;34;40mhardware/net_sent_mb_s[0m    | [0;32;40m9.230573050444946e-05[0m |
+|      [0;34;40mhardware/ram_used_gb[0m     |   [0;32;40m53.102500915527344[0m  |
+|     [0;34;40mhardware/ram_used_pct[0m     |   [0;32;40m42.29999923706055[0m   |
+|      [0;34;40mhparams/lr_default_0[0m     |          [0;32;40m0.0[0m          |
+|         [0;34;40mvalidate/loss[0m         |  [0;32;40m0.22953447699546814[0m  |
+|      [0;34;40mvalidate/loss_epoch[0m      |  [0;32;40m0.22953447699546814[0m  |
+|       [0;34;40mvalidate/pred_loss[0m      |  [0;32;40m0.012812890112400055[0m |
+|    [0;34;40mvalidate/pred_loss_epoch[0m   |  [0;32;40m0.012812890112400055[0m |
+|      [0;34;40mvalidate/sigreg_loss[0m     |   [0;32;40m2.4090144634246826[0m  |
+|   [0;34;40mvalidate/sigreg_loss_epoch[0m  |   [0;32;40m2.4090144634246826[0m  |
++-------------------------------+-----------------------+
+[Epoch 4/5] done in 1079.9s
+15:44:03 | INFO  | checkpoint_~|   Checking for non PyTorch modules to save
+15:44:03 | INFO  | atomic_chec~| [atomic_save] → /home/developer/.cache/stable-pretraining/runs/20260606/141405/0ce29c177b7f/checkpoints/last.ckpt
+15:44:04 | INFO  | atomic_chec~| [atomic_save] ✓ last.ckpt saved (206.8 MiB, serialise=0.18s write=0.12s rename=13.0ms)
+`Trainer.fit` stopped: `max_epochs=5` reached.
+
+[Diagnostics] Results saved to /workspace/notes/LOGS/dim_sweep/berkeley_d192_diag.json
+Epoch 4/4  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 667/667 0:16:14 • 0:00:00 0.73it/s 
+15:44:04 | INFO  | utils.py    | ── SignalHandlers (after Trainer.fit() returned) ──
+15:44:04 | INFO  | manager.py  |   SIGUSR1  → SIG_DFL (default OS action — terminate process)
+15:44:04 | INFO  | manager.py  |   SIGUSR2  → SIG_DFL (default OS action — terminate process)
+15:44:04 | INFO  | manager.py  |   SIGCONT  → SIG_DFL (default OS action — terminate process)
+15:44:04 | INFO  | manager.py  |   SIGTERM  → SIG_DFL (default OS action — terminate process)
+
+============================================================
+  Stage 2: Signal/Noise MSE (d_latent=192)
+============================================================
+
+15:44:04 | INFO  | __init__.py | Using video codec: libsvtav1
+15:44:04 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+15:44:05 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 39756.44it/s]
+Using custom data configuration default-2c7d921dc92e95a7
+15:44:05 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:05 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+15:44:05 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:05 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Computing principal components...
+/workspace/.pixi/envs/default/lib/python3.12/site-packages/lance/__init__.py:320: UserWarning: lance is not fork-safe. If you are using multiprocessing, use spawn or forkserver instead.
+  warnings.warn(
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+15:44:18 | INFO  | __init__.py | Using video codec: libsvtav1
+15:44:18 | INFO  | __init__.py | Using video codec: libsvtav1
+15:44:18 | INFO  | __init__.py | Using video codec: libsvtav1
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+15:44:18 | INFO  | __init__.py | Using video codec: libsvtav1
+15:44:19 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+15:44:19 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+15:44:19 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+15:44:19 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+15:44:19 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+15:44:19 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+15:44:19 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+15:44:19 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 30120.68it/s]
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 15887.52it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 14230.04it/s]
+
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 10433.59it/s]
+Using custom data configuration default-2c7d921dc92e95a7
+15:44:19 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:19 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-2c7d921dc92e95a7
+Using custom data configuration default-2c7d921dc92e95a7
+15:44:19 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+15:44:19 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Using custom data configuration default-2c7d921dc92e95a7
+15:44:19 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:19 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+15:44:19 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:19 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+15:44:19 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:19 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:19 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+15:44:19 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:19 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:19 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+15:44:19 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:19 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+  Collected 8192 embeddings, dim=192
+  Effective rank: 48
+  Top-5 singular values: [325.9875183105469, 319.35107421875, 308.8567810058594, 302.92718505859375, 295.43212890625]
+Evaluating (signal=48, noise=144)...
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+15:44:57 | INFO  | __init__.py | Using video codec: libsvtav1
+15:44:57 | INFO  | __init__.py | Using video codec: libsvtav1
+15:44:57 | INFO  | __init__.py | Using video codec: libsvtav1
+/workspace/.pixi/envs/default/lib/python3.12/multiprocessing/popen_fork.py:66: RuntimeWarning: lancedb fork support is experimental: the internal async runtime has been reset in the forked child, but a small chance of deadlock remains if other state was mid-operation at fork time. The 'forkserver' or 'spawn' multiprocessing start method is likely a safer alternative.
+  self.pid = os.fork()
+15:44:57 | INFO  | __init__.py | Using video codec: libsvtav1
+15:44:58 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+15:44:58 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+15:44:58 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+15:44:58 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/refs "HTTP/1.1 200 OK"
+15:44:58 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+15:44:58 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+15:44:58 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+15:44:58 | INFO  | __init__.py | HTTP Request: GET https://huggingface.co/api/datasets/lerobot/berkeley_autolab_ur5/revision/v3.0 "HTTP/1.1 200 OK"
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 24279.62it/s]
+Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 16878.49it/s]
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 17716.17it/s]
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 36551.67it/s]
+Using custom data configuration default-2c7d921dc92e95a7
+Using custom data configuration default-2c7d921dc92e95a7
+15:44:58 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+15:44:58 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Using custom data configuration default-2c7d921dc92e95a7
+15:44:58 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:58 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-2c7d921dc92e95a7
+15:44:58 | INFO  | __init__.py | Using custom data configuration default-2c7d921dc92e95a7
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:58 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+15:44:58 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:58 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+15:44:58 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:58 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:58 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+15:44:58 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:58 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:58 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-2c7d921dc92e95a7/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+Using custom data configuration default-5537df0288986c40
+15:44:58 | INFO  | __init__.py | Using custom data configuration default-5537df0288986c40
+Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+15:44:58 | INFO  | __init__.py | Found cached dataset parquet (/home/developer/.cache/huggingface/datasets/parquet/default-5537df0288986c40/0.0.0/ec3958b52035e87929642b609b5a781870321434b151a14fbe8fd5a26ff494bb)
+
+======================================================================
+  RESULT: d=192, berkeley
+======================================================================
+  Params: 18,034,448
+  Eff rank: 49.2/192 (26%)
+  SIGReg/pred: 187.2
+  h=1  sig Pred/Copy: 0.5272
+  h=10 sig Pred/Copy: 0.2266
+  Saved: /workspace/notes/LOGS/dim_sweep/berkeley_d192.json
