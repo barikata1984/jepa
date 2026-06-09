@@ -68,6 +68,13 @@ ENV PIXI_BIN_DIR=/usr/local/bin PIXI_NO_PATH_UPDATE=1
 RUN curl -fsSL https://pixi.sh/install.sh | sh \
     && pixi --version
 
+# ---- Node.js + Marp CLI (slide generation from Markdown) -------------------
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+    && apt-get install -y --no-install-recommends nodejs \
+    && npm install -g @marp-team/marp-cli \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* \
+    && node --version && marp --version
+
 # ---- Doppler CLI (fetches secrets per-shell via /etc/zsh/zshenv below) -----
 RUN curl -Ls --tlsv1.2 --proto "=https" --retry 3 https://cli.doppler.com/install.sh \
         | sh -s -- --no-package-manager \

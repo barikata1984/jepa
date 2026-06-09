@@ -37,6 +37,9 @@
           }
         },
 
+        // Marp (Markdown slides)
+        "markdown.marp.enableHtml": true,
+
         // Files
         "files.watcherExclude": {
           "**/.git/**": true,
@@ -84,6 +87,7 @@
         "redhat.vscode-yaml",
         "tamasfe.even-better-toml",
         "yzhang.markdown-all-in-one",
+        "marp-team.marp-vscode",
 
         // --- Productivity ---
         "streetsidesoftware.code-spell-checker",
