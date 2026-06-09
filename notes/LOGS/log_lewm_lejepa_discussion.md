@@ -176,7 +176,7 @@ ID 統合の必要性を既存論文のアブレーションで検証した結�
 
 - PIDM Table 3: L_inv 追加の効果は Avg. Len. +0.23 (+6.7%). Modest.
 - DeFI: GIDM 単体 (4.16) > GFDM 単体 (3.28). **GFDM 凍結 + GIDM 更新 (4.51) > 全部更新 (4.40)**. 分離の方が良い.
-- DeFI §1 が「2D 映像予測と 3D 行動予測の目標競合」を明示的に問題として報告. 統合の困難さは DeFI 自身が論拠.
+- DeFI §1 が"2D 映像予測と 3D 行動予測の目標競合"を明示的に問題として報告. 統合の困難さは DeFI 自身が論拠.
 
 結論: Seed 2 は独立論文にはならず, Seed 1 の ablation に吸収される方が自然.
 
@@ -195,3 +195,40 @@ ID 統合の必要性を既存論文のアブレーションで検証した結�
 1. stable-worldmodel の LeRobotAdapter を多カメラ対応に拡張
 2. berkeley_autolab_ur5 (3 カメラ) で Seed 1 のプロトタイプ実験
 3. フレーミング C の実験設計: 単一 JEPA / concat JEPA / alignment JEPA / 復元系の 4 条件比較
+
+## 2026-06-09: Framing C たたき台作成 (セッション 2)
+
+### 研究問いの精緻化
+
+RQ1 を"Nilaksh の結論は多視点に拡張されるか"から"多視点で復元系が逆転しうる条件があるか"に読み替えた. 根拠:
+- 復元系はクロスビュー再構成で 3D 幾何を暗黙的に学ぶ (ReViWo の VIR/VDR, 4D Latent WM のボクセル再構成). 多視点では復元系に構造的追い風
+- Nilaksh §4.5 自身が"意味系は幾何・接触の精度が落ちる"と失敗モード差を報告. 多視点で幾何情報が増えるとこの弱点が露呈する可能性
+
+3 つの RQ:
+1. 多視点で復元系が意味系を逆転しうる条件はあるか
+2. 多視点統合方法 (素朴連結 vs JEPA cross-view alignment) がワールドモデル予測・計画にどう影響するか
+3. Cross-view alignment は SIGReg の次元ミスマッチ問題を緩和するか
+
+### 5 条件の実験設計
+
+| 条件 | 多視点統合 | 損失 |
+|---|---|---|
+| A. Single-view JEPA | なし (1 カメラ) | L_pred + SIGReg |
+| B. Concat JEPA | 各ビュー独立エンコード → トークン連結 | L_pred + SIGReg (連結後) |
+| C. Alignment JEPA | 各ビュー独立エンコード + cross-view alignment | L_pred + L_align + SIGReg (各ビュー) |
+| D. Reconstruction (ReViWo) | VIR/VDR 分離 | L_recon + L_contrastive |
+| E. Frozen semantic + concat | V-JEPA 2.1 凍結 + adaptor | L_pred のみ |
+
+L_align = 同時刻の異なるカメラからの埋め込み間 MSE の平均 (JEPA alignment 損失をカメラ軸に適用)
+
+### ReViWo 公式実装の発見
+
+- オリジナル: `https://github.com/Trevor-emt/Reviwo` (スター 10, Python, PyTorch + MuJoCo + Metaworld)
+- 筆頭著者フォーク: `https://github.com/lafmdp/ReViWo`
+- 条件 D の工数見積もり: 3–5 日 → 1–2 日に低減
+- ペーパーノートの Repository フィールドを更新済み
+
+### 実装見積もり
+
+合計 ~2–3 週間. 最大ボトルネックは条件 D (ReViWo 移植) だったが, 公式コード発見で緩和.
+前提確認が必要: berkeley_autolab_ur5 の 3 カメラ (image, image_with_depth, hand_image) が実質的に異なる視点を持つか

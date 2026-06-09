@@ -53,10 +53,22 @@
 
 - [ ] Stage 0–2 + dim sweep + SIGReg ablation の結果を踏まえ, 提案手法の方向性を決定する
 - [ ] 候補: (1) RDMReg (Rectified LpJEPA) の LeWM への適用, (2) 変分 JEPA ワールドモデル, (3) 崩壊防止手法の体系的比較
-- [ ] 新規候補 (文献サーベイ由来): 多視点 JEPA alignment による復元不要操作表現学習 → Seed 1 に集約. フレーミング C (多視点での意味 vs 復元の表現比較) を推奨
+- [x] 新規候補 (文献サーベイ由来): 多視点 JEPA alignment による復元不要操作表現学習 → Seed 1 に集約. フレーミング C (多視点での意味 vs 復元の表現比較) を推奨 → **たたき台作成済み**
   - Seed 2 (ID 統合) は独立論文にならず → Seed 1 の ablation に吸収
   - フレーミング A (理論) / B (システム) / C (表現比較) の 3 案. C が最もリスク低い
-  - 次ステップ: stable-worldmodel の LeRobotAdapter 多カメラ拡張 → berkeley_autolab_ur5 (3 カメラ) でプロトタイプ
+  - ReViWo 公式実装発見 (GitHub: Trevor-emt/Reviwo) → 条件 D の工数低減
+
+### Framing C 実装 (方向決定: 多視点での意味 vs 復元の表現比較)
+
+- [ ] berkeley_autolab_ur5 の 3 カメラ配置を確認 (実質的に多視点か)
+- [ ] stable-worldmodel の LeRobotAdapter を多カメラ対応に拡張
+- [ ] World (LeWM) の多カメラ入力対応 (連結/alignment 切り替え)
+- [ ] L_align (cross-view alignment 損失) の実装
+- [ ] 条件 B (Concat JEPA) の訓練・評価
+- [ ] 条件 C (Alignment JEPA) の訓練・評価
+- [ ] 条件 D (ReViWo 復元系ベースライン) の移植・訓練・評価
+- [ ] 条件 E (V-JEPA 2.1 凍結エンコーダ) の訓練・評価
+- [ ] 5 条件の統合評価 (予測精度, 潜在表現品質, 計画性能, 視点頑健性)
 
 ## 比較実験 (方向決定後)
 
