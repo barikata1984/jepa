@@ -96,3 +96,24 @@ LeWM の VoE フレームワーク (物理的に非妥当な事象の検出) を
 当初のフレーミングでは"固定セットアップ → 視覚的多様性が低い → 固有次元が低い → TwoRoom と同じ SIGReg ミスマッチが起きる"と論を展開していたが,"視覚的多様性が低い → 固有次元が低い"に根拠のない飛躍がある. 固定セットアップでも, ロボットアームの 7 自由度や物体姿勢の 6 自由度があり, 画像多様体の固有次元が低いとは限らない. 視覚的に似て見えることと, 画像多様体の固有次元が低いことは別の問題.
 
 修正後のフレーミング: 実機で SIGReg ミスマッチが起きるかは印象論ではなく, 画像多様体の固有次元の実測 (Two-NN, PCA 等) に基づいて判断する. TODO・ISSUES ともにこの方針に修正済み.
+
+---
+
+## 2026-06-09: Literature Survey 完了
+
+### multiview-manipulation-learning-on-jepa
+
+- **出力**: `literature/surveys/multiview-manipulation-learning-on-jepa.md`
+- **規模**: 50 論文採録, 9 ハブ深読み (既存 3 + 新規 6)
+- **新規深読みノート**:
+  - `papers/Sun-arXiv2026-VLA-JEPA_Enhancing_VLA/` — VLA-JEPA
+  - `papers/Tian-ICLR2025-PIDM_Scalable_Learners/` — PIDM/Seer
+  - `papers/Zhang-ICLR2026-DeFI_Disentangled_Robot/` — DeFI
+  - `papers/Li-ICLR2026-4D_Latent_World/` — 4D Latent WM
+  - `papers/ICLR2025-ReViWo_View-invariant_World/` — ReViWo
+  - `papers/Nam-ICML2026-Causal-JEPA_Object-Level/` — Causal-JEPA
+- **主要発見**:
+  - JEPA alignment × 多視点の組み合わせは未開拓 (Concept Matrix で確認)
+  - 順/逆動力学の分離事前学習 (DeFI) が 2026 年の新潮流
+  - 意味表現 > 復元表現がロボット制御で一貫 (Nilaksh+ 2026)
+- **Seed 3 本**: (1) 多視点 JEPA alignment, (2) L_align + L_fwd + L_inv 統合, (3) 多視点物体レベル JEPA

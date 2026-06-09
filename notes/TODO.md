@@ -7,6 +7,7 @@
 - [x] V-JEPA 2-AC (Meta, 2025) のサマリーノート作成 — LeWM の実機ベースラインとして最も直接的
 - [x] "Reconstruction or Semantics?" (2026) の確認 — BridgeV2 上での潜在ワールドモデル encoder 比較
 - [x] stable-worldmodel プラットフォーム論文 (arXiv:2605.21800) の精読
+- [x] 多視点 × JEPA × 操作の broad 文献サーベイ (50 論文, 9 ハブ深読み) → `literature/surveys/multiview-manipulation-learning-on-jepa.md`
 
 ## 環境構築
 
@@ -52,6 +53,7 @@
 
 - [ ] Stage 0–2 + dim sweep + SIGReg ablation の結果を踏まえ, 提案手法の方向性を決定する
 - [ ] 候補: (1) RDMReg (Rectified LpJEPA) の LeWM への適用, (2) 変分 JEPA ワールドモデル, (3) 崩壊防止手法の体系的比較
+- [ ] 新規候補 (文献サーベイ由来): 多視点 JEPA alignment + 潜在順/逆動力学による復元不要操作学習 → `literature/surveys/multiview-manipulation-learning-on-jepa.md` の Seed 1–3 参照
 
 ## 比較実験 (方向決定後)
 
