@@ -117,3 +117,53 @@ LeWM の VoE フレームワーク (物理的に非妥当な事象の検出) を
   - 順/逆動力学の分離事前学習 (DeFI) が 2026 年の新潮流
   - 意味表現 > 復元表現がロボット制御で一貫 (Nilaksh+ 2026)
 - **Seed 3 本**: (1) 多視点 JEPA alignment, (2) L_align + L_fwd + L_inv 統合, (3) 多視点物体レベル JEPA
+
+## 2026-06-09: 研究シード検討 (セッション後半)
+
+### 多視点データセットの調査
+
+使用可能なデータセットを調査し, stable-worldmodel との接続性を評価:
+
+| データセット | カメラ数 | LeRobot 形式 | stable-worldmodel 接続 |
+|---|---|---|---|
+| **berkeley_autolab_ur5** | **3** (image, image_with_depth, hand_image) | ✓ ローカル済 | **最小工数** — adapter 拡張のみ |
+| **DROID** (`lerobot/droid_100`) | **3** (exterior×2, wrist) | ✓ | 小 — DL + adapter |
+| **BridgeV2** | **4** (RGBD + RGB×2 + wrist) | ✓ | 小 |
+| **RLBench** | **4** (RGB-D) | ✗ | 中 — 変換必要 |
+| RoboMIND UR5e | 1 | ✓ | — 多視点不適 |
+
+重要な発見: berkeley_autolab_ur5 は既に 3 カメラ持っており, パイプライン疎通済み.
+
+### LeRobot の多視点サポート状況
+
+- LeRobot Dataset 層: 多視点サポート済み (`camera_keys` に複数カメラ)
+- LeRobot Policy 層 (ACT, DP): 多視点サポート済み (パターン 1: 各カメラ独立エンコード → トークン連結)
+- **stable-worldmodel Adapter**: 未対応 (`primary_camera_key` で 1 カメラに絞る)
+- **stable-worldmodel World (LeWM)**: 未対応 (`'pixels'` 単一入力前提)
+- 改修ポイントは stable-worldmodel 側の 2 箇所のみ
+
+### 既存研究の多視点処理パターン (4 類型)
+
+1. **独立エンコード → 連結** (ACT, PIDM, VLA-JEPA): 最も素朴. ビュー間幾何を明示的に学ばない
+2. **ビュー不変/依存分離** (ReViWo, MAD, VILA): 再構成 or 対比損失で分離. 視点ラベル要
+3. **3D 中間表現に統合** (4D Latent WM, SPA): キャリブレーション必須, 計算コスト大
+4. **マスク予測** (MV-MWM): ピクセル再構成に計算を費やす
+
+提案の Seed 1 はパターン 2 の alignment 版に位置づけ. パターン 3 と比べてキャリブレーション不要.
+
+### Seed の実現可能性・採択可能性評価
+
+- **Seed 1** (多視点 JEPA alignment): 実現可能性 高, 新規性 中, 採択 ICRA/IROS 向き
+- **Seed 2** (L_align + L_fwd + L_inv 統合): 実現可能性 中, 新規性 中〜高, **CoRL/RSS が最適 venue**
+- **Seed 3** (多視点物体レベル JEPA): 実現可能性 低〜中, 新規性 高, 中長期テーマ
+- 推奨: Seed 1 → Seed 2 の段階設計. Seed 2 が最もバランス良い
+
+### モチベーションの整理
+
+説得力のある論拠 (強い順):
+1. 遮蔽 — 把持時に手が物体を隠す. 単一カメラの情報理論的限界
+2. 復元不要の優位性 — Nilaksh+ 2026 が意味表現 > 復元表現を実証済み
+3. キャリブレーション不要 — 3D 復元 (4D Latent WM 等) と比べた実用的優位
+4. 計画能力 — ACT の素朴 concat にはない長期ホライズン推論
+
+最大リスク: JEPA alignment のビュー不変表現が復元ベース 3D 表現に勝つ条件の特定
