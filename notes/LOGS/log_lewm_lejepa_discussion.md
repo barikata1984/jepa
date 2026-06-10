@@ -273,3 +273,54 @@ L_total = L_cvt_pred + lambda_1 * L_sigreg_per_view + lambda_2 * L_cross_ep
 - Le MuMo JEPA (Cornelissen+ 2026): マルチモーダル JEPA で融合トークンに SIGReg 適用
 - HaoChen+ ICLR 2023: Spectral contrastive learning, InfoNCE とカーネル PCA の接続
 - Matrix-SSL (2023): 行列情報理論で VICReg/Barlow Twins を統一的に理解
+
+## 2026-06-10: Cross-view alignment に至った議論の経緯
+
+### 出発点: LeJEPA × neural fields の組み合わせ
+
+最初のシードは「LeJEPA の alignment 損失と NeRF/3DGS のビュー依存性が構造的に似ている — 同じものを別視点から眺めて単一の表現を獲得する」という直感だった. NeRF/3DGS は復元ベースで多視点一貫性を獲得するが, JEPA の alignment は復元なしでそれができるのではないか, という問い.
+
+### リフレーミング: 3D 表現 → 潜在空間での 3 項損失
+
+「無理に 3D 表現と言わなくても, 多視点データから物体操作を復元ベースではなく潜在空間での alignment + 順動力学 + 逆動力学として解く」方向に転換. 先行研究の地図が NeRF/3DGS 論文群からロボット学習 (PIDM, LAPA, DeFI) + 表現学習理論 (LeJEPA, Klindt) にシフトした.
+
+### 文献サーベイ (50 論文) の結果
+
+Concept Matrix で確認した最大の空白: **JEPA alignment × 多視点/ビュー不変** に該当する論文がゼロ. V-JEPA 2 は単一視点の時間マスク予測, ReViWo は復元ベースのビュー分離, MV-MWM はマスク再構成.
+
+### Seed 2 (ID 統合) の棄却
+
+PIDM のアブレーション (L_inv 追加で +6.7%) と DeFI の知見 (GFDM 凍結 + GIDM 更新が全部更新より良い, 目標競合の報告) から, 逆動力学の統合は強い貢献にならないと判断. Seed 2 は Seed 1 の ablation に吸収.
+
+### フレーミングの検討
+
+3 案 (A: 理論拡張, B: システム, C: 表現学習比較) を検討. C (Nilaksh+ 2026 の多視点拡張) が最もリスク低い. ただしたたき台の L_align が VICReg の invariance 項と区別がつかず, 「提案手法」として弱い問題が判明.
+
+### L_align の格上げ → cross-view-temporal prediction
+
+「時空間を混ぜたい」という発想から, L_pred と L_align を統一する案が浮上:
+- 標準 LeWM: predictor(f(x_t^0), a_t) → f(x_{t+1}^0) (同カメラ, 次時刻)
+- 提案: predictor(f(x_t^0), a_t, cam_token[j]) → f(x_{t+1}^j) (別カメラ, 次時刻)
+
+DeFI の「目標競合」は ピクセル復元 vs 行動予測の間で起きたものであり, 両方とも潜在空間予測である本提案には当てはまらないことを確認. L_pred と L_align を 2 つの損失として足す必要がなく, 1 つの予測目的に統一できる点が美しい.
+
+### ビュー不変性の保証問題
+
+ただし cross-view-temporal prediction 単独ではビュー不変性が保証されない. predictor がビュー変換を丸暗記してエンコーダがサボるショートカットが生じる (I-JEPA の predictor 容量問題と同構造). このため, 同時刻・異カメラの埋め込みを近づける正則化が別途必要.
+
+### Cross-view Epps-Pulley の発見
+
+7 つの候補を調査した結果, SIGReg の自然な拡張として「2 標本 Epps-Pulley 検定でカメラ間分布一致を強制」する Cross-view Epps-Pulley を推奨. SIGReg と同じ数学的基盤 (Cramér-Wold 定理) で, 実装は数十行の追加.
+
+### 現在の提案構成
+
+```
+L_total = L_cvt_pred + lambda_1 * L_sigreg_per_view + lambda_2 * L_cross_ep
+```
+
+3 項の役割分担:
+- L_cvt_pred: cross-view-temporal prediction. dynamics + ビュー横断予測 (統一的予測目的)
+- L_sigreg_per_view: 各カメラの崩壊防止 (既存 SIGReg)
+- L_cross_ep: カメラ間分布一致 (Cross-view Epps-Pulley). エンコーダにビュー不変性を明示的に強制
+
+この構成は「JEPA の予測目的を時空間 × カメラ軸に統一し, SIGReg をカメラ間に自然拡張した」として, Concept Matrix の空白セルを埋めつつ手法的新規性を主張できる.
