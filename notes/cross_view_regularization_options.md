@@ -85,7 +85,7 @@ L_bt = sum((C - I)^2)  # 対角 = 1 (alignment), 非対角 = 0 (冗長性削減)
 mu_fused, var_fused = product_of_experts(mus, logvars)
 ```
 
-- **根拠**: Multi-View Dreaming (Kanazawa+ 2022) が Dreamer の RSSM に適用. ガウスの積はガウス. 確信度で自動重み付け
+- **根拠**: Multi-View Dreaming (Kinose+ 2023) が Dreamer の RSSM に適用. ガウスの積はガウス. 確信度で自動重み付け
 - **利点**: 各カメラの埋め込みを直接一致させる必要がない. カメラ固有情報を持ったまま統合後にビュー不変表現を得る. VJEPA (Huang+ ICML 2026) の確率的 JEPA と自然に接続
 - **欠点**: エンコーダが平均+分散を出す必要あり, LeWM のアーキテクチャ変更が大きい
 
@@ -165,10 +165,10 @@ L_total = L_cvt_pred + lambda * L_sigreg_per_view + L_infonce_cross_view
 - Balestriero & LeCun 2025: LeJEPA / SIGReg. Cramér-Wold + Epps-Pulley の基盤
 - Cornelissen+ 2026: Le MuMo JEPA. マルチモーダルでの結合 SIGReg 適用
 - Tian+ ECCV 2020: Contrastive Multiview Coding. 多視点 InfoNCE の基盤
-- HaoChen+ ICLR 2023: Spectral contrastive learning. InfoNCE とカーネル PCA の接続
+- HaoChen+ NeurIPS 2021: Spectral contrastive learning. InfoNCE とカーネル PCA の接続
 - Zbontar+ ICML 2021: Barlow Twins. 相互相関行列の正則化
 - Bardes+ ICLR 2022: VICReg. 分散・不変性・共分散正則化. SIGReg の特殊ケース
-- Kanazawa+ 2022: Multi-View Dreaming. PoE による多視点潜在統合
+- Kinose+ 2023: Multi-View Dreaming. PoE による多視点潜在統合 (arXiv:2203.11024, Advanced Robotics Vol.37 No.19)
 - Federici+ 2020: Multi-View Information Bottleneck. 情報理論的枠組み
 - Huang+ ICML 2026: VJEPA. 確率的 JEPA
 - Wang & Isola 2020: Alignment-Uniformity. SSL 損失の 2 軸分析
