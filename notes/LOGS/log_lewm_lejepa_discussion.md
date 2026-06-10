@@ -278,11 +278,11 @@ L_total = L_cvt_pred + lambda_1 * L_sigreg_per_view + lambda_2 * L_cross_ep
 
 ### 出発点: LeJEPA × neural fields の組み合わせ
 
-最初のシードは「LeJEPA の alignment 損失と NeRF/3DGS のビュー依存性が構造的に似ている — 同じものを別視点から眺めて単一の表現を獲得する」という直感だった. NeRF/3DGS は復元ベースで多視点一貫性を獲得するが, JEPA の alignment は復元なしでそれができるのではないか, という問い.
+最初のシードは"LeJEPA の alignment 損失と NeRF/3DGS のビュー依存性が構造的に似ている — 同じものを別視点から眺めて単一の表現を獲得する"という直感だった. NeRF/3DGS は復元ベースで多視点一貫性を獲得するが, JEPA の alignment は復元なしでそれができるのではないか, という問い.
 
 ### リフレーミング: 3D 表現 → 潜在空間での 3 項損失
 
-「無理に 3D 表現と言わなくても, 多視点データから物体操作を復元ベースではなく潜在空間での alignment + 順動力学 + 逆動力学として解く」方向に転換. 先行研究の地図が NeRF/3DGS 論文群からロボット学習 (PIDM, LAPA, DeFI) + 表現学習理論 (LeJEPA, Klindt) にシフトした.
+"無理に 3D 表現と言わなくても, 多視点データから物体操作を復元ベースではなく潜在空間での alignment + 順動力学 + 逆動力学として解く"方向に転換. 先行研究の地図が NeRF/3DGS 論文群からロボット学習 (PIDM, LAPA, DeFI) + 表現学習理論 (LeJEPA, Klindt) にシフトした.
 
 ### 文献サーベイ (50 論文) の結果
 
@@ -294,15 +294,15 @@ PIDM のアブレーション (L_inv 追加で +6.7%) と DeFI の知見 (GFDM �
 
 ### フレーミングの検討
 
-3 案 (A: 理論拡張, B: システム, C: 表現学習比較) を検討. C (Nilaksh+ 2026 の多視点拡張) が最もリスク低い. ただしたたき台の L_align が VICReg の invariance 項と区別がつかず, 「提案手法」として弱い問題が判明.
+3 案 (A: 理論拡張, B: システム, C: 表現学習比較) を検討. C (Nilaksh+ 2026 の多視点拡張) が最もリスク低い. ただしたたき台の L_align が VICReg の invariance 項と区別がつかず,"提案手法"として弱い問題が判明.
 
 ### L_align の格上げ → cross-view-temporal prediction
 
-「時空間を混ぜたい」という発想から, L_pred と L_align を統一する案が浮上:
+"時空間を混ぜたい"という発想から, L_pred と L_align を統一する案が浮上:
 - 標準 LeWM: predictor(f(x_t^0), a_t) → f(x_{t+1}^0) (同カメラ, 次時刻)
 - 提案: predictor(f(x_t^0), a_t, cam_token[j]) → f(x_{t+1}^j) (別カメラ, 次時刻)
 
-DeFI の「目標競合」は ピクセル復元 vs 行動予測の間で起きたものであり, 両方とも潜在空間予測である本提案には当てはまらないことを確認. L_pred と L_align を 2 つの損失として足す必要がなく, 1 つの予測目的に統一できる点が美しい.
+DeFI の"目標競合"は ピクセル復元 vs 行動予測の間で起きたものであり, 両方とも潜在空間予測である本提案には当てはまらないことを確認. L_pred と L_align を 2 つの損失として足す必要がなく, 1 つの予測目的に統一できる点が美しい.
 
 ### ビュー不変性の保証問題
 
@@ -310,7 +310,7 @@ DeFI の「目標競合」は ピクセル復元 vs 行動予測の間で起き�
 
 ### Cross-view Epps-Pulley の発見
 
-7 つの候補を調査した結果, SIGReg の自然な拡張として「2 標本 Epps-Pulley 検定でカメラ間分布一致を強制」する Cross-view Epps-Pulley を推奨. SIGReg と同じ数学的基盤 (Cramér-Wold 定理) で, 実装は数十行の追加.
+7 つの候補を調査した結果, SIGReg の自然な拡張として"2 標本 Epps-Pulley 検定でカメラ間分布一致を強制"する Cross-view Epps-Pulley を推奨. SIGReg と同じ数学的基盤 (Cramér-Wold 定理) で, 実装は数十行の追加.
 
 ### 現在の提案構成
 
@@ -323,4 +323,48 @@ L_total = L_cvt_pred + lambda_1 * L_sigreg_per_view + lambda_2 * L_cross_ep
 - L_sigreg_per_view: 各カメラの崩壊防止 (既存 SIGReg)
 - L_cross_ep: カメラ間分布一致 (Cross-view Epps-Pulley). エンコーダにビュー不変性を明示的に強制
 
-この構成は「JEPA の予測目的を時空間 × カメラ軸に統一し, SIGReg をカメラ間に自然拡張した」として, Concept Matrix の空白セルを埋めつつ手法的新規性を主張できる.
+この構成は"JEPA の予測目的を時空間 × カメラ軸に統一し, SIGReg をカメラ間に自然拡張した"として, Concept Matrix の空白セルを埋めつつ手法的新規性を主張できる.
+
+## 2026-06-10: Cross-view 正則化メモの批評と改訂 (セッション 3)
+
+### 候補 7 (Cross-view Epps-Pulley) 推奨の取り下げ
+
+批評セッションにより, 前エントリの推奨 (候補 7) を以下の理由で取り下げた:
+
+1. **等長変換への盲目性**: 分布レベルの一致は z^cam1 = R z^cam0 (R: 任意の直交変換) を罰せられない. これは"predictor がビュー変換を丸暗記するショートカット"そのものであり, 本メモの目的を達成しない
+2. **per-view SIGReg との冗長性**: 各ビューが N(0,I) に収束すれば分布一致は自動的に成立する. L_cross_ep が独立の価値を持つのは学習途中の過渡期のみで, その論証はなかった
+3. **安定性の未検証**: LeJEPA の勾配有界性解析は対固定ガウス特性関数の 1 標本検定前提. 2 標本版への移植可能性は自明でない
+4. **新規性の脆さ**: 特性関数 2 標本検定は Epps-Singleton (1986) が先行. JEPA 文脈でも Rectified LpJEPA (arXiv:2602.01456) の RDMReg が sliced 2 標本分布マッチングを導入済み
+
+### 新推奨: 候補 0 (素朴 cross-view MSE)
+
+評価基準を"サンプルレベル一致"主軸に変更し, framing C 草案の L_align (同時刻・異カメラのペア MSE) を候補 0 として表に追加, 推奨に格上げ. 前エントリで素朴 MSE を外した理由 (VICReg invariance 項と区別がつかない) は novelty の問題であり有効性の問題ではない. 新規性は L_cvt_pred を含む構成全体で主張する.
+
+```
+L_total = L_cvt_pred + lambda_1 * L_sigreg_per_view + lambda_2 * L_align
+```
+
+### 波及修正
+
+- **framing_c_draft.md**: 条件 C の予測項を L_pred → L_cvt_pred に更新 (06-10 の設計変更を反映). 条件 C 内 ablation (C1: L_pred + L_align / C2: L_cvt_pred のみ / C3: 全部入り) を追加. 条件 B の SIGReg を連結後 → 各ビュー独立に変更 (連結後適用は非対角ブロック = 0 でカメラ間無相関化を強制し, B vs C 比較を汚染するため)
+- **Klindt+ 2026 の同型主張の弱め**: サーベイ Gap 1 と正則化メモの"数学的に同型"を"構造的に対応 (空間的ペアへの拡張は未証明)"に修正. サーベイ Seed 1 Readiness の記述と整合させた
+- **サーベイの計数修正**: Papers mapped 50 → 51 (Paper Catalogue 実数・年別合計と一致). Concept Matrix の"VLA-JEPA (repeat)"重複行を削除し, 欠落していた I-JEPA / V-JEPA 2.1 の行を追加 (これで Concept Distribution の JEPA alignment 15 件・順動力学 24 件と Matrix が一致). Rectified LpJEPA の arXiv ID プレースホルダを 2602.01456 に修正. LaVA-Man が単一視点手法である旨を注記
+
+## 2026-06-10: berkeley_autolab_ur5 カメラ配置の確認 (セッション 3 続き)
+
+### 確認方法
+
+1. ローカルデータの目視: 各カメラキーの動画からフレームを抽出. image = 三人称 RGB, image_with_depth = 深度のカラーマップ動画, hand_image = 手首 RGB
+2. 公式ドキュメント (Berkeley UR5 Demonstration Dataset サイト + TFDS カタログ): third_person_image (TFDS では image_with_depth) は "The first 3 channels are the same as 'image,' and the last dimension is depth"
+
+### 結論: 実質 2 視点
+
+- image と image_with_depth は同一 RGB-D カメラ (同一視点) の RGB と深度
+- 真の視点は (三人称, 手首) の 2 つのみ. 手首カメラは腕と共に動く
+- (image, image_with_depth) ペアの alignment は cross-view ではなく cross-modal であり, 実験に含めると検証を汚染する
+
+### 波及
+
+- framing_c_draft のデータセット表と前提確認を更新. L_align ペア集合から (image, image_with_depth) を除外
+- ISSUES に「berkeley_autolab_ur5 の視点多様性不足」を追加
+- 未決定事項: 静的視点ペア (exterior x 2) を持つ DROID (droid_100) を主実験に昇格するか. berkeley は Stage 0-2 測定値との直接比較という利点があるため, 予備実験への降格が対案
