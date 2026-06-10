@@ -232,3 +232,44 @@ L_align = 同時刻の異なるカメラからの埋め込み間 MSE の平均 (
 
 合計 ~2–3 週間. 最大ボトルネックは条件 D (ReViWo 移植) だったが, 公式コード発見で緩和.
 前提確認が必要: berkeley_autolab_ur5 の 3 カメラ (image, image_with_depth, hand_image) が実質的に異なる視点を持つか
+
+## 2026-06-10: Cross-view 正則化の枠組み調査
+
+### 問題
+
+Cross-view-temporal prediction loss だけではビュー不変性が保証されない. predictor がビュー変換を丸暗記し, エンコーダがビュー依存な表現を出すショートカットが生じる (I-JEPA で predictor が強すぎると起きるのと同じ構造).
+
+### L_align の格上げ検討
+
+- 素朴 MSE (たたき台の L_align) は VICReg の invariance 項と区別がつかない
+- Cross-view predictive alignment (predictor を挟む) を検討したが, predictor がビュー変換を吸収してエンコーダがサボる問題は解消しない
+- Cross-view-temporal prediction (カメラ 0 の t + 行動 → カメラ 1 の t+1) は統一的で魅力的だが, 単独ではビュー不変性を保証しない
+
+### 結論: 正則化項の追加が必要
+
+7 候補を調査 (→ `notes/cross_view_regularization_options.md`):
+1. Cross-view SIGReg (結合バッチ)
+2. Cross-view InfoNCE
+3. Barlow Twins / VICReg 式
+4. Product of Experts
+5. HSIC 最小化
+6. Multi-View Information Bottleneck
+7. **Cross-view Epps-Pulley 検定** ← 推奨
+
+### 推奨構成
+
+```
+L_total = L_cvt_pred + lambda_1 * L_sigreg_per_view + lambda_2 * L_cross_ep
+```
+
+- L_cvt_pred: cross-view-temporal prediction (dynamics 学習)
+- L_sigreg_per_view: 各カメラの崩壊防止 (既存 SIGReg)
+- L_cross_ep: カメラ間分布一致 (Cross-view Epps-Pulley, 候補 7)
+
+推奨理由: SIGReg と同じ数学的基盤 (Cramér-Wold + Epps-Pulley) でカメラ間分布一致を強制. 実装は SIGReg を複製して 2 標本版にするだけ. Le MuMo JEPA (2026) が結合 SIGReg をマルチモーダルでやっているが, 2 標本検定は未提案.
+
+### 発見した関連論文
+
+- Le MuMo JEPA (Cornelissen+ 2026): マルチモーダル JEPA で融合トークンに SIGReg 適用
+- HaoChen+ ICLR 2023: Spectral contrastive learning, InfoNCE とカーネル PCA の接続
+- Matrix-SSL (2023): 行列情報理論で VICReg/Barlow Twins を統一的に理解
