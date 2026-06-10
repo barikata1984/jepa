@@ -16,6 +16,10 @@ SIGReg の理論的保証は i.i.d. 仮定に基づく. LeWM はステップワ�
 
 当初 BridgeV2 (WidowX 250) を検証用データセットとしていたが, 最終ターゲットが UR5e であるため,"LeWM の問題" と "embodiment ミスマッチの問題" を切り分けられないリスクがあった. RoboMIND UR5e データ (25K 軌跡, LeRobot 変換対応済み) を主軸に変更. ただし RoboMIND UR5e はカメラ 1 台 (BGR 順) のみで, 深度やハンドカメラがない点が制約になりうる.
 
+## berkeley_autolab_ur5 の視点多様性不足 (Framing C 主実験への制約)
+
+berkeley_autolab_ur5 の 3 カメラキーのうち image_with_depth は image と同一カメラの深度チャネルであり (公式:"The first 3 channels are the same as 'image,' and the last dimension is depth"), 実質 2 視点 (三人称 RGB-D + 手首) しかない. 残る視点ペア (三人称, 手首) も手首カメラが腕と共に動くため, 静的視点間の cross-view alignment の検証には不適. 主実験を DROID (droid_100, exterior x 2 + wrist) に昇格するかが未決定. berkeley を使い続ける場合は Stage 0–2 の測定値と直接比較できる利点と引き換えに,"多視点"の主張が (静的, 手首) 1 ペアに依存する.
+
 ## 評価手法 (コピーベースライン Pred/Copy) の方法論的問題
 
 Stage 2 で使用したコピーベースラインとの Pred/Copy 比較には, pred_proj と projector の MLP 出力空間不一致による系統的バイアスがある. ノイズ次元で ~0.005 の定数オフセットが全ホライズン・全条件で生じ, 特に h=1 で支配的になる. 条件間の相対比較は有効だが, 絶対値としての Pred/Copy は信頼できない. 下流タスク評価 (CEM 計画 → 成功率) が必要.

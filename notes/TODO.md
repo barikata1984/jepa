@@ -60,12 +60,14 @@
 
 ### Framing C 実装 (方向決定: 多視点での意味 vs 復元の表現比較)
 
-- [ ] berkeley_autolab_ur5 の 3 カメラ配置を確認 (実質的に多視点か)
+- [x] berkeley_autolab_ur5 の 3 カメラ配置を確認 (実質的に多視点か) — **実質 2 視点と判明**. image_with_depth は image と同一カメラの深度チャネル (公式:"The first 3 channels are the same as 'image,' and the last dimension is depth"). 真の視点ペアは (三人称, 手首) の 1 組のみで, 手首カメラは腕と共に動く
+- [ ] 主実験データセットの再検討: 静的視点ペア (exterior x 2) を持つ DROID (droid_100) を主実験に昇格するか決定
 - [ ] stable-worldmodel の LeRobotAdapter を多カメラ対応に拡張
 - [ ] World (LeWM) の多カメラ入力対応 (連結/alignment 切り替え)
-- [ ] L_align (cross-view alignment 損失) の実装
-- [ ] 条件 B (Concat JEPA) の訓練・評価
-- [ ] 条件 C (Alignment JEPA) の訓練・評価
+- [ ] L_align (cross-view alignment 損失, 正則化メモ候補 0) の実装
+- [ ] L_cvt_pred (cross-view-temporal prediction, cam_token 付き predictor) の実装
+- [ ] 条件 B (Concat JEPA) の訓練・評価 — SIGReg は各ビュー独立適用 (連結後は不可, 2026-06-10 改訂)
+- [ ] 条件 C (Alignment JEPA) の訓練・評価 — ablation 含む (C1: L_pred + L_align / C2: L_cvt_pred のみ / C3: 全部入り)
 - [ ] 条件 D (ReViWo 復元系ベースライン) の移植・訓練・評価
 - [ ] 条件 E (V-JEPA 2.1 凍結エンコーダ) の訓練・評価
 - [ ] 5 条件の統合評価 (予測精度, 潜在表現品質, 計画性能, 視点頑健性)
