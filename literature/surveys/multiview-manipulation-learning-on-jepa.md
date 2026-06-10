@@ -3,14 +3,14 @@
 | | |
 |---|---|
 | **Date** | 2026-06-09 |
-| **Scope** | JEPA 系 alignment 損失, 潜在順/逆動力学, 多視点表現学習, 3D/4D ワールドモデルの交差領域. ロボット操作への応用を中心に, 復元ベースと alignment ベースの対比を軸に 50 論文を採録 |
-| **Papers mapped** | 50 |
+| **Scope** | JEPA 系 alignment 損失, 潜在順/逆動力学, 多視点表現学習, 3D/4D ワールドモデルの交差領域. ロボット操作への応用を中心に, 復元ベースと alignment ベースの対比を軸に 51 論文を採録 |
+| **Papers mapped** | 51 |
 | **Hub papers (deep-read)** | 9 (既存ローカルノート 3 + 新規 6) |
 | **Research Questions** | RQ1: 多視点観測から操作表現を学ぶ自己教師あり手法の分類 / RQ2: 潜在順/逆動力学の評価条件と限界 / RQ3: JEPA alignment × 多視点一貫性の探索状況と未開拓領域 / RQ4: 復元不要アプローチ vs 復元ベースの優劣条件 / RQ5: 多視点操作学習のモチベーション |
 
 ## Abstract
 
-ロボット操作のための視覚表現学習は, 復元ベース (VAE, NeRF, 3DGS) と alignment ベース (対比学習, JEPA) の 2 つの系統に分岐しつつある. 本サーベイは 50 論文を採録し, JEPA 系 alignment 損失・潜在順動力学・潜在逆動力学・多視点一貫性の 4 つの技術軸の交差点を体系的にマッピングした. 主要な発見として, (1) JEPA 式 alignment 損失を多視点間に適用した研究は存在せず, (2) 順/逆動力学の分離事前学習が 2025–2026 年に急速に進展し, (3) 意味表現エンコーダが復元系エンコーダをロボット制御タスクで一貫して上回ることが実証されている. これらの知見は, seed 15 本からの snowballing と 8 角度の直接検索により導出された.
+ロボット操作のための視覚表現学習は, 復元ベース (VAE, NeRF, 3DGS) と alignment ベース (対比学習, JEPA) の 2 つの系統に分岐しつつある. 本サーベイは 51 論文を採録し, JEPA 系 alignment 損失・潜在順動力学・潜在逆動力学・多視点一貫性の 4 つの技術軸の交差点を体系的にマッピングした. 主要な発見として, (1) JEPA 式 alignment 損失を多視点間に適用した研究は存在せず, (2) 順/逆動力学の分離事前学習が 2025–2026 年に急速に進展し, (3) 意味表現エンコーダが復元系エンコーダをロボット制御タスクで一貫して上回ることが実証されている. これらの知見は, seed 15 本からの snowballing と 8 角度の直接検索により導出された.
 
 ## Research Landscape Overview
 
@@ -70,7 +70,7 @@
 
 1. **JEPA alignment × 多視点の空白**
 
-Concept Matrix が示す通り, JEPA 式 alignment 損失と多視点一貫性を組み合わせた研究は存在しない. V-JEPA 2 は単一視点の時間マスク予測, ReViWo は復元ベースのビュー分離, MV-MWM はマスク再構成であり, いずれも JEPA の alignment 損失 (MSE in embedding + SIGReg) を複数カメラ間に適用していない. Klindt+ 2026 の識別可能性定理は"同じ潜在状態から生成された 2 つの観測"に対して成立し, これは多視点カメラの設定と数学的に同型である. このギャップが埋まれば, 復元なしで 3D 的に一貫な操作表現を獲得する理論的基盤が得られる.
+Concept Matrix が示す通り, JEPA 式 alignment 損失と多視点一貫性を組み合わせた研究は存在しない. V-JEPA 2 は単一視点の時間マスク予測, ReViWo は復元ベースのビュー分離, MV-MWM はマスク再構成であり, いずれも JEPA の alignment 損失 (MSE in embedding + SIGReg) を複数カメラ間に適用していない. Klindt+ 2026 の識別可能性定理は"同じ潜在状態から生成された 2 つの観測"に対して成立し, 多視点カメラの設定と構造的に対応する. ただし定理は時間的ビューペアを仮定しており, カメラごとに生成関数が異なる空間的ペアへの拡張は未証明である (Seed 1 Readiness 参照). この拡張が証明されれば, 復元なしで 3D 的に一貫な操作表現を獲得する理論的基盤が得られる.
 
 2. **順/逆動力学 + 多視点 alignment の統合**
 
@@ -90,7 +90,7 @@ Causal-JEPA ([[papers/Nam-ICML2026-Causal-JEPA_Object-Level/causal-jepa-learning
 
 | Seed | 前提 | アプローチ |
 |------|------|----------|
-| 1 | JEPA alignment は"同一潜在状態の異なる観測間の一貫性"を学ぶ. 多視点カメラは同一 3D シーンの異なる 2D 射影を生成する. 両者は数学的に同型 | 多視点間に JEPA alignment + SIGReg を適用し, 復元なしでビュー不変表現を獲得 |
+| 1 | JEPA alignment は"同一潜在状態の異なる観測間の一貫性"を学ぶ. 多視点カメラは同一 3D シーンの異なる 2D 射影を生成する. 両者は構造的に対応 (定理の空間的ペアへの拡張は未証明) | 多視点間に JEPA alignment + SIGReg を適用し, 復元なしでビュー不変表現を獲得 |
 | 2 | 順動力学 (LeWM) と逆動力学 (PIDM/DeFI) は個別に実証済み. 多視点 alignment は ReViWo が実証済み. 三者の統合は未検証 | L_align + L_fwd + L_inv の 3 項統合損失で, 多視点復元不要操作学習 |
 | 3 | Causal-JEPA の物体レベルマスキングは合成環境で有効. 多視点は遮蔽の自然な解消手段 | Causal-JEPA を多視点に拡張し, 物体間相互作用 + 遮蔽解消を同時に学習 |
 
@@ -170,9 +170,11 @@ Gap 4 (物体レベル推論の操作への展開) を Causal-JEPA の多視点�
 
 | Paper | JEPA alignment | 順動力学 | 逆動力学 | 多視点/ビュー不変 | 3D/4D 表現 | 復元不要 |
 |-------|:-:|:-:|:-:|:-:|:-:|:-:|
+| I-JEPA 2023 | ● | | | | | ● |
 | [[papers/Balestriero-arXiv2025-LeJEPA_Provable_Scalable/lejepa-provable-and-scalable-self-supervised-learning-without-the-heuristics\|LeJEPA 2025]] | ● | | | | | ● |
 | [[papers/Klindt-arXiv2026-When_LeJEPA_Learn/when-does-lejepa-learn-a-world-model\|Klindt+ 2026]] | ● | | | | | ● |
 | [[papers/Assran-arXiv2025-V-JEPA_Self-Supervised_Video/v-jepa-2-self-supervised-video-models-enable-understanding-prediction-and-planning\|V-JEPA 2 2025]] | ● | ● | | | | ● |
+| V-JEPA 2.1 2026 | ● | ● | | | | ● |
 | [[papers/Huang-ICML2026-VJEPA/vjepa-variational-joint-embedding-predictive-architectures-as-probabilistic-world-models\|VJEPA 2026]] | ● | ● | | | | ● |
 | [[papers/Nam-ICML2026-Causal-JEPA_Object-Level/causal-jepa-learning-world-models-through-object-level-latent-masking\|Causal-JEPA 2026]] | ● | ● | | | | ● |
 | [[papers/Maes-arXiv2026-LeWorldModel_Stable_End-to-End/leworldmodel-stable-end-to-end-joint-embedding-predictive-architecture-from-pixels\|LeWM 2026]] | ● | ● | | | | ● |
@@ -219,7 +221,6 @@ Gap 4 (物体レベル推論の操作への展開) を Causal-JEPA の多視点�
 | MoDem-V2 2024 | | ● | | | | |
 | Geometric Set Consistency 2022 | | | | ● | ● | |
 | Multi-View Contrastive Coding 2020 | | | | ● | | ● |
-| VLA-JEPA (repeat) | — | — | — | — | — | — |
 
 **Matrix の読み方**: `●` = 手法の中核要素, `○` = 言及・部分的利用, 空欄 = 不使用. 最も疎な交差は **JEPA alignment × 多視点/ビュー不変** (該当論文なし) と **JEPA alignment × 逆動力学** (VLA-JEPA が部分的のみ).
 
@@ -302,7 +303,7 @@ JEPA の理論的基盤から応用展開までを包含するクラスタ. LeJE
 7. **Nam+ 2026** *(hub — see [[papers/Nam-ICML2026-Causal-JEPA_Object-Level/causal-jepa-learning-world-models-through-object-level-latent-masking|deep read]])*
 8. **Maes+ 2026** *(local note — see [[papers/Maes-arXiv2026-LeWorldModel_Stable_End-to-End/leworldmodel-stable-end-to-end-joint-embedding-predictive-architecture-from-pixels|deep read]])*
 9. **Destrade+ 2025** *(local note — see [[papers/Destrade-arXiv2025-Value-guided_Action_Planning/value-guided-action-planning-with-jepa-world-models|deep read]])*
-10. **Kuang+ 2026**,"Rectified LpJEPA" ([arXiv](https://arxiv.org/abs/2606.xxxxx)) — スパース・最大エントロピー表現
+10. **Kuang+ 2026**,"Rectified LpJEPA" ([arXiv](https://arxiv.org/abs/2602.01456)) — スパース・最大エントロピー表現. RDMReg (sliced 2 標本分布マッチング) を導入
 11. **Sun+ 2026** *(hub — see [[papers/Sun-arXiv2026-VLA-JEPA_Enhancing_VLA/vla-jepa-enhancing-vision-language-action-model-with-latent-world-model|deep read]])*
 12. **Miao+ 2026**,"JEPA-VLA: Video Predictive Embedding is Needed for VLA Models" ([arXiv](https://arxiv.org/abs/2602.11832)) — V-JEPA 2 バックボーンで VLA
 13. **Huang 2026**,"BiJEPA: Bi-directional JEPA for Symmetric Representation Learning" ([arXiv](https://arxiv.org/abs/2603.00049)) — 双方向予測, サイクル整合
@@ -331,7 +332,7 @@ JEPA の理論的基盤から応用展開までを包含するクラスタ. LeJE
 6. **Qian+ 2024**,"3D-MVP: 3D Multiview Pretraining for Robotic Manipulation" ([arXiv](https://arxiv.org/abs/2406.18158)) — 多視点マスク事前学習
 7. **Cui+ 2025**,"CL3R: 3D Reconstruction and Contrastive Learning for Enhanced Robotic Manipulation" ([arXiv](https://arxiv.org/abs/2507.08262)) — 点群 MAE + 対比学習
 8. **Kanazawa+ 2022**,"Multi-View Dreaming" ([Advanced Robotics 2023](https://arxiv.org/abs/2203.11024)) — 多視点対比学習 + Dreamer
-9. **Zhu+ 2025**,"LaVA-Man" ([CoRL 2025](https://arxiv.org/abs/2508.19391)) — マスクゴール画像再構成
+9. **Zhu+ 2025**,"LaVA-Man" ([CoRL 2025](https://arxiv.org/abs/2508.19391)) — マスクゴール画像再構成. 単一視点であり多視点手法ではない (Concept Matrix 全列空欄はこのため. 本クラスタへの配置は操作表現学習としての関連による)
 10. **TVVE 2026**,"Learning to See and Act: Task-Aware Virtual View Exploration" ([arXiv](https://arxiv.org/abs/2508.05186)) — 遮蔽克服
 11. **VistaBot 2026**, ([arXiv](https://arxiv.org/abs/2604.21914)) — 4D 幾何 + ビデオ拡散でビュー頑健操作
 
@@ -389,14 +390,14 @@ JEPA の理論的基盤から応用展開までを包含するクラスタ. LeJE
 | 基盤手法 | WebSearch | "VICReg Barlow Twins R3M VIP" | ~6 |
 | Snowballing | seed 15 + 1-hop | — | ~80 candidates |
 
-- Total mapped: 50
+- Total mapped: 51 (初版は 50 と記載していたが, Paper Catalogue の実数 51 と年別集計の合計 51 に合わせて修正)
 - Duplicates removed: 4
 - Excluded by I/E criteria: ~26 (navigation 専用, NLP 専用, workshop-only)
 
 ### Hub Selection
 
 - Selection criteria: B (cluster bridging + citation proxy) AND/OR C (synthesis centrality)
-- Candidates considered: 50
+- Candidates considered: 51
 - Final hubs: 9 (3 existing local notes + 6 new deep reads)
 - PDFs successfully acquired: 6/6 new (1 required retry — 4D Latent WM initial arXiv ID mismatch)
 - Citation proxy used (S2 MCP unavailable): venue tier + WebSearch hits + survey-internal citation frequency
